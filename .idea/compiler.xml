@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for just-reader" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="just-reader-data" />
+        <module name="just-reader-processor" />
+        <module name="juest-reader-common" />
+        <module name="just-reader-client" />
+        <module name="just-reader-gateway" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="juest-reader-common" options="-parameters" />
+      <module name="just-reader" options="-parameters" />
+      <module name="just-reader-client" options="-parameters" />
+      <module name="just-reader-data" options="-parameters" />
+      <module name="just-reader-gateway" options="-parameters" />
+      <module name="just-reader-processor" options="-parameters" />
+    </option>
+  </component>
+</project>
