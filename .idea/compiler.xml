@@ -2,29 +2,34 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Annotation profile for just-reader" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
         <module name="just-reader-data" />
-        <module name="just-reader-processor" />
-        <module name="juest-reader-common" />
-        <module name="just-reader-client" />
+        <module name="just-reader-file" />
+        <module name="just-reader-auth" />
         <module name="just-reader-gateway" />
+        <module name="just-reader-client" />
+        <module name="just-reader-processor" />
+        <module name="just-reader-common" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="juest-reader-common" options="-parameters" />
-      <module name="just-reader" options="-parameters" />
-      <module name="just-reader-client" options="-parameters" />
-      <module name="just-reader-data" options="-parameters" />
-      <module name="just-reader-gateway" options="-parameters" />
-      <module name="just-reader-processor" options="-parameters" />
+      <module name="just-reader" options="-parameters -parameters" />
+      <module name="just-reader-auth" options="-parameters -parameters" />
+      <module name="just-reader-client" options="-parameters -parameters" />
+      <module name="just-reader-common" options="-parameters -parameters" />
+      <module name="just-reader-data" options="-parameters -parameters" />
+      <module name="just-reader-file" options="-parameters -parameters" />
+      <module name="just-reader-gateway" options="-parameters -parameters" />
+      <module name="just-reader-processor" options="-parameters -parameters" />
     </option>
   </component>
 </project>

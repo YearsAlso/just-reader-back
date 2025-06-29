@@ -1,0 +1,61 @@
+package com.yearsalso.data.entity;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 消息-消息发送
+ * </p>
+ *
+ * @author els
+ * @since 2024-08-12
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@TableName("mms_message_send")
+@Schema(description = "消息-消息发送")
+public class MmsMessageSend extends BaseEntity implements Serializable {
+
+    /**
+     * 消息ID
+     */
+    @Schema(description = "消息ID")
+    private String messageId;
+
+    /**
+     * 状态
+     */
+    @Schema(description = "状态")
+    private Integer status;
+
+    /**
+     * 用户ID
+     */
+    @Schema(description = "用户ID")
+    private String targetUserId;
+
+    /**
+     * 发起用户Id
+     */
+    @Schema(description = "发起用户Id")
+    private String sourceUserId;
+
+    /**
+     * 通道编号
+     */
+    @Schema(description = "通道编号")
+    private String channelCode;
+
+    /**
+     * 通道Id
+     */
+    @Schema(description = "通道Id")
+    private String channelId;
+}

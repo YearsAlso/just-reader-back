@@ -1,0 +1,16 @@
+**/*.log
+Dockerfile
+.git
+.gitlab
+.gitlab-ci.yml
+.gitignore
+.idea
+*.jar
+docker-compose.yml
+docker-compose.prod.yml
+deploy.yml
+README.md
+**/*.sh
+**/*.md
+**/*.cmd
+**/*.bat

@@ -1,144 +1,401 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yearsalso</groupId>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.8-SNAPSHOT</version>
+        <version>3.2.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.yearsalso</groupId>
+
     <artifactId>just-reader</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <name>just-reader</name>
     <description>just-reader</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
+
     <modules>
-        <module>juest-reader-common</module>
         <module>just-reader-data</module>
+        <module>just-reader-common</module>
         <module>just-reader-client</module>
         <module>just-reader-gateway</module>
         <module>just-reader-processor</module>
+        <module>just-reader-file</module>
+        <module>just-reader-auth</module>
     </modules>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+
     <properties>
+        <revision>1.0.0</revision>
         <java.version>21</java.version>
+        <graalvm.version>21.2.0</graalvm.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-boot.version>3.2.4</spring-boot.version>
+        <skipTests>true</skipTests>
+        <docker.host>http://172.17.160.1:2375</docker.host>
+        <docker.maven.plugin.version>0.40.0</docker.maven.plugin.version>
+        <spring-cloud.version>2023.0.1</spring-cloud.version>
+        <spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version>
+        <spring-security-oauth2-authorization-server.version>1.3.1</spring-security-oauth2-authorization-server.version>
+        <pagehelper-starter.version>1.4.2</pagehelper-starter.version>
+        <pagehelper.version>5.3.0</pagehelper.version>
+        <druid.version>1.2.22</druid.version>
+        <hutool.version>5.8.0</hutool.version>
+        <mybatis-generator.version>1.4.1</mybatis-generator.version>
+        <mybatis.version>3.5.9</mybatis.version>
+        <mysql-connector.version>8.0.29</mysql-connector.version>
+        <spring-data-commons.version>3.2.4</spring-data-commons.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <aliyun-oss.version>2.5.0</aliyun-oss.version>
+        <admin-starter-server.version>3.3.3</admin-starter-server.version>
+        <minio.version>8.4.1</minio.version>
+        <knife4j.version>4.4.0</knife4j.version>
+        <nimbus-jose-jwt.version>9.37.2</nimbus-jose-jwt.version>
+        <just-reader-common.version>${revision}</just-reader-common.version>
+        <just-reader-data.version>${revision}</just-reader-data.version>
+        <mybatis-plus.version>3.5.7</mybatis-plus.version>
+        <mybatis-plus-generator.version>3.5.7</mybatis-plus-generator.version>
+        <cos-api.version>5.6.45</cos-api.version>
+        <qiniu.version>[7.13.0, 7.13.99]</qiniu.version>
+        <sa-token.version>1.37.0</sa-token.version>
+        <xxl-job.version>2.3.1</xxl-job.version>
+        <mybatis-mate-starter.version>1.3.4</mybatis-mate-starter.version>
+        <azure-storage-blob.version>12.16.0</azure-storage-blob.version>
     </properties>
+
+
+    <version>${revision}</version>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- GraalVM Native Image Support -->
+        <dependency>
+            <groupId>org.graalvm.nativeimage</groupId>
+            <artifactId>svm</artifactId>
+            <version>${graalvm.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <!--Spring Cloud 相关依赖-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--Spring Cloud Alibaba 相关依赖-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--MyBatis分页插件starter-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-starter.version}</version>
+            </dependency>
+            <!--集成druid连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!--Hutool Java工具包-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>2.0.2</version>
+            </dependency>
+            <!-- 官方建议是springdoc替代springfox-->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+                <version>2.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-dependencies</artifactId>
+                <version>${knife4j.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+            <!--Mysql数据库驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
+            </dependency>
+            <!--SpringData工具包-->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-commons</artifactId>
+                <version>${spring-data-commons.version}</version>
+            </dependency>
+            <!--JWT(Json Web Token)登录支持-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <!--JWT(Json Web Token)登录支持-->
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>nimbus-jose-jwt</artifactId>
+                <version>${nimbus-jose-jwt.version}</version>
+            </dependency>
+            <!-- 阿里云OSS -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-oss.version}</version>
+            </dependency>
+            <!--集成SpringBoot Admin监控-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${admin-starter-server.version}</version>
+            </dependency>
+            <!--集成SpringBoot Admin监控客户端-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${admin-starter-server.version}</version>
+            </dependency>
+            <!--MinIO JAVA SDK-->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>
+
+            <!--通用模块-->
+            <dependency>
+                <groupId>com.yearsalso</groupId>
+                <artifactId>just-reader-common</artifactId>
+                <version>${just-reader-common.version}</version>
+            </dependency>
+            <!--中MBG生成模块-->
+            <dependency>
+                <groupId>com.yearsalso</groupId>
+                <artifactId>just-reader-data</artifactId>
+                <version>${just-reader-data.version}</version>
+            </dependency>
+            <!---->
+            <dependency>
+                <groupId>com.qcloud</groupId>
+                <artifactId>cos_api</artifactId>
+                <version>${cos-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qiniu</groupId>
+                <artifactId>qiniu-java-sdk</artifactId>
+                <version>${qiniu.version}</version>
+            </dependency>
+            <!-- Sa-Token 权限认证（Reactor响应式集成） -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-reactor-spring-boot3-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <!-- Sa-Token 权限认证 -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot3-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <!-- Sa-Token 整合 Redis (使用jackson序列化方式) -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-redis-jackson</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <!-- Sa-Token 整合 jwt -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-jwt</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
+            </dependency>
+            <!--    Azure Blob        -->
+            <dependency>
+                <groupId>com.azure</groupId>
+                <artifactId>azure-storage-blob</artifactId>
+                <version>${azure-storage-blob.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
+        <finalName>${project.name}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${docker.maven.plugin.version}</version>
+                    <executions>
+                        <!--如果想在项目打包时构建镜像添加-->
+                        <execution>
+                            <id>build-image</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!-- Docker 远程管理地址-->
+                        <dockerHost>${docker.host}</dockerHost>
+                        <images>
+                            <image>
+                                <!--定义镜像名称-->
+                                <name>yearsalso/${project.name}:${project.version}</name>
+                                <!--定义镜像构建行为-->
+                                <build>
+                                    <!--定义基础镜像-->
+                                    <from>openjdk:21</from>
+                                    <args>
+                                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                                    </args>
+                                    <!--定义哪些文件拷贝到容器中-->
+                                    <assembly>
+                                        <!--定义拷贝到容器的目录-->
+                                        <targetDir>/opt/app</targetDir>
+                                        <!--只拷贝生成的jar包-->
+                                        <descriptorRef>artifact</descriptorRef>
+                                    </assembly>
+                                    <!--定义容器启动命令-->
+                                    <entryPoint>["java",
+                                        "-jar","-Dspring.profiles.active=prod","/opt/app/${project.build.finalName}.jar"]
+                                    </entryPoint>
+                                    <!--定义维护者-->
+                                    <maintainer>els</maintainer>
+                                </build>
+                            </image>
+                        </images>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
+            <!-- Plugin to load .env file -->
             <plugin>
-                <groupId>org.hibernate.orm.tooling</groupId>
-                <artifactId>hibernate-enhance-maven-plugin</artifactId>
-                <version>${hibernate.version}</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
                 <executions>
                     <execution>
-                        <id>enhance</id>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
+                        <phase>initialize</phase>
                         <configuration>
-                            <enableLazyInitialization>true</enableLazyInitialization>
-                            <enableDirtyTracking>true</enableDirtyTracking>
-                            <enableAssociationManagement>true</enableAssociationManagement>
+                            <files>
+                                <file>${project.basedir}/.env</file>
+                            </files>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.graalvm.buildtools</groupId>
-                <artifactId>native-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
+
     <repositories>
         <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
+            <id>aliyunmaven</id>
+            <name>aliyun</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
+            <id>aliyun-repos</id>
+            <url>https://maven.aliyun.com/repository/public</url>
             <releases>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
 </project>

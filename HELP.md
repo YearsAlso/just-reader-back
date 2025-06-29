@@ -46,7 +46,7 @@ $ ./mvnw spring-boot:build-image -Pnative
 Then, you can run the app like any other container:
 
 ```
-$ docker run --rm -p 8080:8080 just-reader:0.0.1-SNAPSHOT
+$ docker run --rm -p 8080:8080 just-reader:1.0.0
 ```
 
 ### Executable with Native Build Tools
