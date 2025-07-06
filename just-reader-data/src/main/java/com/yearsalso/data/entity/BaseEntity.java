@@ -31,7 +31,7 @@ public abstract class BaseEntity implements Serializable {
      * 主键ID
      */
     @TableId
-    private String id;
+    private Long id;
 
     /**
      * 创建者

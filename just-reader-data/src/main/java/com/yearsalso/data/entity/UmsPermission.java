@@ -52,7 +52,7 @@ public class UmsPermission extends BaseEntity implements Serializable {
      * 父级Id
      */
     @Schema(description = "父级Id")
-    private String parentId;
+    private Long parentId;
 
     /**
      * 排序

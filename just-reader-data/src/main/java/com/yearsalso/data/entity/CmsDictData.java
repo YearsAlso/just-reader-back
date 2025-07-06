@@ -34,7 +34,7 @@ public class CmsDictData extends BaseEntity implements Serializable {
      * 字典标题Id
      */
     @Schema(description = "字典标题Id")
-    private String dictId;
+    private Long dictId;
 
     /**
      * 排序

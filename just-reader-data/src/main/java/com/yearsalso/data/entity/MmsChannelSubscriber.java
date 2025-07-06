@@ -27,7 +27,7 @@ public class MmsChannelSubscriber extends BaseEntity implements Serializable {
      * 频道ID
      */
     @Schema(description = "频道ID")
-    private String channelId;
+    private Long channelId;
 
     /**
      * 频道编号
@@ -39,5 +39,5 @@ public class MmsChannelSubscriber extends BaseEntity implements Serializable {
      * 用户id
      */
     @Schema(description = "用户id")
-    private String userId;
+    private Long userId;
 }

@@ -27,7 +27,7 @@ public class FmsFileTag extends BaseEntity implements Serializable {
      * 文件 Id
      */
     @Schema(description = "文件 Id")
-    private String fileId;
+    private Long fileId;
 
     /**
      * 标签名字

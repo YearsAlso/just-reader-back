@@ -14,8 +14,8 @@ public class SnowflakeIdUtils implements IdentifierGenerator {
     @Value("${snowflake.data-center-id:1}")
     static long dataCenterId = 1;
 
-    public static String getSnowflakeId() {
-        return IdUtil.getSnowflake(workerId, dataCenterId).nextIdStr();
+    public static Long getSnowflakeId() {
+        return IdUtil.getSnowflake(workerId, dataCenterId).nextId();
     }
 
     @Override

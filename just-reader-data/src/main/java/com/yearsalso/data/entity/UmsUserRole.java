@@ -27,11 +27,11 @@ public class UmsUserRole extends BaseEntity implements Serializable {
      * 角色ID
      */
     @Schema(description = "角色ID")
-    private String roleId;
+    private Long roleId;
 
     /**
      * 用户ID
      */
     @Schema(description = "用户ID")
-    private String userId;
+    private Long userId;
 }

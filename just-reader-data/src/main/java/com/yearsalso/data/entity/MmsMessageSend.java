@@ -45,7 +45,7 @@ public class MmsMessageSend extends BaseEntity implements Serializable {
      * 发起用户Id
      */
     @Schema(description = "发起用户Id")
-    private String sourceUserId;
+    private Long sourceUserId;
 
     /**
      * 通道编号
@@ -57,5 +57,5 @@ public class MmsMessageSend extends BaseEntity implements Serializable {
      * 通道Id
      */
     @Schema(description = "通道Id")
-    private String channelId;
+    private Long channelId;
 }

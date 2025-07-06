@@ -45,5 +45,5 @@ public class UmsRole extends BaseEntity implements Serializable {
      * 父级ID
      */
     @Schema(description = "父级ID")
-    private String parentId;
+    private Long parentId;
 }
