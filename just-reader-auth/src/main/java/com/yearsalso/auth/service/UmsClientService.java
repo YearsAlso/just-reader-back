@@ -1,9 +1,11 @@
 package com.yearsalso.auth.service;
 
 
+import com.yearsalso.auth.domain.UmsClientLoginParam;
 import com.yearsalso.common.api.CommonResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -14,10 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  **/
 @FeignClient("just-reader-client")
 public interface UmsClientService {
-    @PostMapping("/dms/auth/login")
-    CommonResult login(@RequestParam("username") String username,
-                       @RequestParam("password") String password,
-                       @RequestParam("deviceCode") String deviceCode,
-                       @RequestParam("autoLogin") Boolean autoLogin
-    );
+    @PostMapping("/ums/auth/login")
+    CommonResult login(@RequestBody UmsClientLoginParam umsClientLoginParam);
 }

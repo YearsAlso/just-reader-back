@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 @Builder
 @Schema(title = "用户登录参数")
 @EqualsAndHashCode(callSuper = false)
-public class UmsAdminLoginParam {
+public class UmsClientLoginParam {
 
     @Schema(title = "用户名", required = true)
     @NotEmpty
@@ -26,4 +26,7 @@ public class UmsAdminLoginParam {
 
     @Schema(title = "自动登录", required = false)
     public Boolean autoLogin = false;
+
+    @Schema(title = "客户端类型", required = true)
+    private String clientType;
 }

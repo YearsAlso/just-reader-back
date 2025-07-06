@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient("just-reader-admin")
 public interface UmsAdminService {
 
-    @PostMapping("/umsAuth/login")
+    @PostMapping("/ums/auth/login")
     CommonResult login(@RequestBody UmsAdminLoginParam umsAdminLoginParam);
 }

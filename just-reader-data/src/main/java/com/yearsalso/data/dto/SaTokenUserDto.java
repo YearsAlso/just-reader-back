@@ -16,7 +16,7 @@ import java.util.List;
 @Accessors(chain = true)
 public class SaTokenUserDto {
     @Schema(title = "id")
-    private String id;
+    private Long id;
 
     @Schema(title = "用户名")
     private String username;

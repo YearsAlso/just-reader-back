@@ -14,10 +14,10 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class SaTokenDeviceDto {
     @Schema(title = "id")
-    private String id;
+    private Long id;
 
     @Schema(title = "用户id")
-    private String userId;
+    private Long userId;
 
     @Schema(title = "用户名")
     private String username;
