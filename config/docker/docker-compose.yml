@@ -2,14 +2,15 @@ version: "3.8"
 services:
   # mysql
   just-reader-db:
-    image: postgres:15.7
+    image: postgres:17.1
     container_name: just-reader-postgres
     hostname: postgres
     ports:
       - "35432:5432"
-    volumes:
-      - ./deploy/just-reader-db:/var/lib/postgresql/data
-    restart: on-failure
+    volumes: # 数据持久化的配置
+      - /deploy/just-reader-db/data:/var/lib/postgresql/data
+      - /deploy/just-reader-db/log:/var/log/postgresql
+#    restart: on-failure
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123456
