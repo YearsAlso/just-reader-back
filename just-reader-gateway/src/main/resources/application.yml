@@ -1,0 +1,114 @@
+server:
+  port: 8201
+spring:
+  main:
+    web-application-type: reactive
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true #使用小写service-id
+      routes: #配置路由路径
+        - id: yearsalso-auth
+          uri: lb://yearsalso-auth
+          predicates:
+            - Path=/yearsalso-auth/**
+          filters:
+            - StripPrefix=1
+        - id: yearsalso-client
+          uri: lb://yearsalso-client
+          predicates:
+            - Path=/yearsalso-client/**
+          filters:
+            - StripPrefix=1
+        - id: yearsalso-file
+          uri: lb://yearsalso-file
+          predicates:
+            - Path=/yearsalso-file/**
+          filters:
+            - StripPrefix=1
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:8201/yearsalso-auth/rsa/publicKey' #配置RSA的公钥访问地址
+  data:
+    redis:
+      database: 0
+      port: 6379
+      host: localhost
+      password:
+      timeout: 6000ms # 连接超时时间（毫秒）
+  servlet:
+    multipart:
+      enabled: true #开启文件上传
+      max-file-size: 30MB #限制文件上传大小为10M
+secure:
+  ignore:
+    urls: #配置白名单路径
+      - "/doc.html"
+      - "/v3/api-docs/swagger-config"
+      - "/*/v3/api-docs/default"
+      - "/*/v3/api-docs"
+      - "/*/swagger-ui/**"
+      - "/*/*.js"
+      - "/*/*.css"
+      - "/*/*.png"
+      - "/*/*.ico"
+      - "/webjars/**"
+      - "/actuator/**"
+      - "/yearsalso-auth/**"
+      - "/yearsalso-client/**"
+      - "/yearsalso-client/ums/loginPage/login"
+      - "/yearsalso-client/admin/register"
+      - "/yearsalso-client/minio/upload"
+      - "/yearsalso-client/fms/assets/**"
+      - "/yearsalso-client/fms/fileApi/**"
+      - "/yearsalso-file/**"
+management: #开启SpringBoot Admin的监控
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+sa-token:
+  # token名称 (同时也是cookie名称)
+  token-name: Authorization
+  # token有效期，单位秒，-1代表永不过期
+  timeout: 2592000
+  # token临时有效期 (指定时间内无操作就视为token过期)，单位秒
+  active-timeout: -1
+  # 是否允许同一账号并发登录 (为false时新登录挤掉旧登录)
+  is-concurrent: true
+  # 在多人登录同一账号时，是否共用一个token (为false时每次登录新建一个token)
+  is-share: false
+  # token风格
+  token-style: tik
+  # 是否输出操作日志
+  is-log: false
+  # 是否从cookie中读取token
+  is-read-cookie: false
+  # 是否从head中读取token
+  is-read-header: true
+  # token前缀
+  token-prefix: Bearer
+  # 是否打印banner
+  is-print: false
+
+knife4j:
+  # 聚合swagger文档
+  gateway:
+    enabled: true
+    strategy: discover #网关文档聚合方式：服务发现（自动聚合）
+    discover:
+      version: openapi3 #配置OpenAPI3规范
+      enabled: true #配置开启服务发现
+      excluded-services: yearsalso-monitor #排除监控服务
+    tags-sorter: order #配置tag排序规则
+    operations-sorter: order #配置operation排序规则

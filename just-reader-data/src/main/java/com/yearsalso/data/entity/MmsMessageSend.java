@@ -2,6 +2,7 @@ package com.yearsalso.data.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -19,6 +20,7 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@Table(name = "mms_message_send")
 @TableName("mms_message_send")
 @Schema(description = "消息-消息发送")
 public class MmsMessageSend extends BaseEntity implements Serializable {

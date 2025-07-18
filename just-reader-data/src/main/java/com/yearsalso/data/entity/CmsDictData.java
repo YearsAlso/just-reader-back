@@ -2,6 +2,7 @@ package com.yearsalso.data.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -20,6 +21,7 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@Table(name = "cms_dict_data")
 @TableName("cms_dict_data")
 @Schema(description = "内容-数据字典内容")
 public class CmsDictData extends BaseEntity implements Serializable {

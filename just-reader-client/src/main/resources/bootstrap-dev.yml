@@ -1,0 +1,15 @@
+spring:
+  devtools:
+    restart:
+      enabled: false
+      trigger-file: .reloadtrigger
+      additional-paths: src/main/java
+      exclude: static/**,
+      log-condition-evaluation-delta: false
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848
+      config:
+        server-addr: http://localhost:8848
+        file-extension: yaml

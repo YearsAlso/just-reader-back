@@ -2,6 +2,7 @@ package com.yearsalso.data.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -19,9 +20,10 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@Table(name = "ums_role_permission")
 @TableName("ums_role_permission")
 @Schema(description = "用户-角色权限")
-public class UmsRolePermission extends BaseEntity implements Serializable  {
+public class UmsRolePermission extends BaseEntity implements Serializable {
 
     /**
      * 权限ID

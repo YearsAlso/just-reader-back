@@ -5,12 +5,17 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -22,6 +27,9 @@ import java.util.Date;
  * @author
  */
 @Data
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "fieldHandler"})
 @Schema(title = "基础实体")
 public abstract class BaseEntity implements Serializable {
 
@@ -30,6 +38,7 @@ public abstract class BaseEntity implements Serializable {
     /**
      * 主键ID
      */
+    @Id
     @TableId
     private Long id;
 
@@ -49,7 +58,7 @@ public abstract class BaseEntity implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.INSERT)
     @Schema(title = "创建时间")
-    private Date createTime;
+    private Date createAt;
 
     /**
      * 更新者
@@ -67,7 +76,7 @@ public abstract class BaseEntity implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.UPDATE)
     @Schema(title = "更新时间")
-    private Date updateTime;
+    private Date updateAt;
 
     /**
      * 删除标志 默认0
@@ -75,12 +84,4 @@ public abstract class BaseEntity implements Serializable {
     @TableLogic
     @Schema(title = "删除标志 默认0")
     private Integer delFlag = 0;
-
-    /**
-     * 备注
-     */
-    @Schema(title = "注释")
-    @TableField(value = "remarks")
-    private String remarks;
-
 }

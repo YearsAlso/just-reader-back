@@ -1,0 +1,17 @@
+spring:
+  devtools:
+    restart:
+      enabled: false
+  cloud:
+    nacos:
+      username: @nacos.username@
+      password: @nacos.password@
+      discovery:
+        server-addr: http://yearsalso-nacos:38848
+      config:
+        server-addr: http://yearsalso-nacos:38848
+        file-extension: yaml
+  config:
+    import:
+      - nacos:application-@profiles.active@.yml
+      - nacos:${spring.application.name}-@profiles.active@.yml

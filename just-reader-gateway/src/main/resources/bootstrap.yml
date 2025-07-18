@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: yearsalso-gateway
+
+# 日志
+logging:
+  # 输出级别
+  level:
+    root: info
+  # 指定路径
+  file:
+    # 最大保存天数
+    # 每个文件最大大小
+    path: logs
+  logback:
+    rollingpolicy:
+      max-history: 7
+      max-file-size: 5MB

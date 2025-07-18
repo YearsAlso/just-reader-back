@@ -81,7 +81,7 @@ springdoc:
     enabled: true
   group-configs:
     - group: 'default'
-      packages-to-scan: cn.els.yearsalso.admin.controller
+      packages-to-scan: com..yearsalso.admin.controller
   default-flat-param-object: false
 sa-token:
   # token名称 (同时也是cookie名称)
@@ -110,7 +110,7 @@ sa-token:
   is-print: false
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml,mapper/*/*.xml
-  type-aliases-package: cn.els.yearsalso.data.entity
+  type-aliases-package: com..yearsalso.data.entity
   configuration:
     map-underscore-to-camel-case: true
     auto-mapping-behavior: full
