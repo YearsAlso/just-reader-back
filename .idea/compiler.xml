@@ -10,6 +10,7 @@
         <module name="just-reader-data" />
         <module name="just-reader-file" />
         <module name="just-reader-auth" />
+        <module name="just-reader-monitor" />
         <module name="just-reader-client" />
         <module name="just-reader-gateway" />
         <module name="just-reader-common" />
@@ -29,6 +30,7 @@
       <module name="just-reader-data" options="-parameters -parameters" />
       <module name="just-reader-file" options="-parameters -parameters" />
       <module name="just-reader-gateway" options="-parameters -parameters" />
+      <module name="just-reader-monitor" options="-parameters -parameters" />
       <module name="just-reader-processor" options="-parameters -parameters" />
     </option>
   </component>

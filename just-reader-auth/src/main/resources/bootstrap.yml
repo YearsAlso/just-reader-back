@@ -2,6 +2,6 @@ spring:
   profiles:
     active: dev
   application:
-    name: yearsalso-auth
+    name: just-reader-auth
   main:
     allow-bean-definition-overriding: true

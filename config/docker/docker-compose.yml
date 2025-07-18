@@ -1,0 +1,152 @@
+version: "3.8"
+services:
+  # mysql
+  just-reader-db:
+    image: postgres:15.7
+    container_name: just-reader-postgres
+    hostname: postgres
+    ports:
+      - "35432:5432"
+    volumes:
+      - ./deploy/just-reader-db:/var/lib/postgresql/data
+    restart: on-failure
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DATABASE: els-just-reader-local
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.50
+  # redis
+  just-reader-redis:
+    container_name: just-reader-redis
+    hostname: redis
+    image: redis:6.0.9
+    ports:
+      - "36379:6379"
+    restart: on-failure
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.51
+  # activemq
+  just-reader-mq:
+    image: rabbitmq:management
+    container_name: just-reader-rabbitmq
+    hostname: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./deploy/just-reader-mq/data/:/var/lib/rabbitmq
+      - ./deploy/just-reader-mq/log/:/var/log/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+      - TZ=Asia/Shanghai
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.52
+  # nacos
+  just-reader-nacos:
+    container_name: just-reader-nacos
+    hostname: nacos
+    image: nacos/nacos-server:v3.0.2
+    ports:
+      - "28080:8080"
+      - "8848:8848"
+      - "9848:9848"
+    environment:
+      - PREFER_HOST_MODE=hostname
+      - MODE=standalone
+      - NACOS_AUTH_IDENTITY_KEY=serverIdentity
+      - NACOS_AUTH_IDENTITY_VALUE=security
+      - NACOS_AUTH_TOKEN=VGhpc0lzTXlDdXN0b21TZWNyZXRLZXkwMTIzNDU2Nzg=
+    volumes:
+      - ./deploy/just-reader-nacos/logs:/home/nacos/logs
+      - ./deploy/just-reader-nacos/conf/application.properties:/home/nacos/conf/application.properties
+    restart: on-failure
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.53
+  # prometheus
+  just-reader-prometheus:
+    container_name: just-reader-prometheus
+    hostname: prometheus
+    image: prom/prometheus:latest
+    ports:
+      - "39090:9090"
+    volumes:
+      - ./deploy/just-reader-prometheus/config/prometheus.yaml:/etc/prometheus/prometheus.yml
+    restart: on-failure
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.54
+    depends_on:
+      - just-reader-nacos
+  # grafana
+  just-reader-grafana:
+    container_name: just-reader-grafana
+    hostname: grafana
+    image: grafana/grafana:latest
+    ports:
+      - "33000:3000"
+    volumes:
+      - ./deploy/just-reader-grafana:/app
+    restart: on-failure
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.55
+  # loki
+  just-reader-loki:
+    container_name: just-reader-loki
+    hostname: loki
+    image: grafana/loki:latest
+    ports:
+      - "33100:3100"
+    volumes:
+      - ./deploy/just-reader-loki/config:/etc/loki
+    restart: on-failure
+    command: -config.file=/etc/loki/config.yml
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.56
+  # promtail
+  just-reader-promtail:
+    container_name: just-reader-promtail
+    hostname: promtail
+    image: grafana/promtail:latest
+    ports:
+      - "39080:9080"
+    volumes:
+      - ./deploy/just-reader-promtail/config:/etc/promtail
+    restart: on-failure
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.57
+  # minio
+  just-reader-minio:
+    container_name: just-reader-minio
+    image: minio/minio
+    hostname: minio
+    ports:
+      - "39000:9000"
+      - "39001:9001" # 控制台端口
+    volumes:
+      - ./deploy/just-reader-minio/data:/data
+    environment:
+      MINIO_ACCESS_KEY: minioadmin    #管理后台用户名
+      MINIO_SECRET_KEY: minioadmin    #管理后台密码，最小8个字符
+    restart: on-failure
+    command: server --console-address ':9001' /data
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.58
+
+networks:
+  just-reader-network:
+    external: true

@@ -1,0 +1,84 @@
+version: "3"
+services:
+  just-reader-monitor:
+    image: just-reader-back/just-reader-monitor:${IMG_VERSION}
+    build:
+      context: ./just-reader-monitor
+      dockerfile: Dockerfile
+    ports:
+      - "8101:8101"
+    volumes:
+      - ./just-reader-monitor:/app
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.11
+  just-reader-auth:
+    image: just-reader-back/just-reader-auth:${IMG_VERSION}
+    build:
+      context: ./just-reader-auth
+      dockerfile: Dockerfile
+    ports:
+      - "8401:8401"
+    volumes:
+      - ./just-reader-auth:/app
+    depends_on:
+      - just-reader-monitor
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.12
+  just-reader-gateway:
+    image: just-reader-back/just-reader-gateway:${IMG_VERSION}
+    build:
+      context: ./just-reader-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8201:8201"
+    volumes:
+      - ./just-reader-gateway:/app
+    depends_on:
+      - just-reader-auth
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.13
+  just-reader-client:
+    image: just-reader-back/just-reader-client:${IMG_VERSION}
+    build:
+      context: ./just-reader-client
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./just-reader-client:/app
+    depends_on:
+      - just-reader-gateway
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.14
+  just-reader-file:
+    image: just-reader-back/just-reader-file:${IMG_VERSION}
+    build:
+      context: ./just-reader-file
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./just-reader-file:/app
+    depends_on:
+      - just-reader-gateway
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.15
+  just-reader-processor:
+    image: just-reader-back/just-reader-processor:${IMG_VERSION}
+    build:
+      context: ./just-reader-processor
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./just-reader-processor:/app
+    depends_on:
+      - just-reader-gateway
+    networks:
+      just-reader-network:
+        ipv4_address: 172.172.0.16

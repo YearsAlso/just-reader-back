@@ -27,6 +27,7 @@
         <module>just-reader-processor</module>
         <module>just-reader-file</module>
         <module>just-reader-auth</module>
+        <module>just-reader-monitor</module>
     </modules>
 
     <properties>
