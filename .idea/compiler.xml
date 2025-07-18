@@ -3,22 +3,22 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Annotation profile for just-reader" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
-        </processorPath>
         <module name="just-reader-data" />
         <module name="just-reader-file" />
         <module name="just-reader-auth" />
-        <module name="just-reader-gateway" />
         <module name="just-reader-client" />
-        <module name="just-reader-processor" />
+        <module name="just-reader-gateway" />
         <module name="just-reader-common" />
+        <module name="just-reader-processor" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="juest-reader-common" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
