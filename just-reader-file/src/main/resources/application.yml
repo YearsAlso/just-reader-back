@@ -32,10 +32,10 @@ spring:
         login-username: druid
         login-password: druid
   rabbitmq: #rabbitmq相关配置
-    host: localhost
+    host: just-reader-mq
     port: 5672
-    username: guest
-    password: guest
+    username: admin
+    password: admin
   servlet:
     multipart:
       enabled: true #开启文件上传

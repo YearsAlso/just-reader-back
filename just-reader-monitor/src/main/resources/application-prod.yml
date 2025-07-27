@@ -2,4 +2,4 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://yearsalso-nacos:8848
+        server-addr: just-reader-nacos:18848

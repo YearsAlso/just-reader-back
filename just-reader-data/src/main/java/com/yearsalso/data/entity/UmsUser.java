@@ -78,4 +78,10 @@ public class UmsUser extends BaseEntity implements Serializable {
      */
     @Schema(description = "用户名")
     private String username;
+
+    /**
+     * 密码盐
+     */
+    @Schema(description = "密码盐")
+    private String PasswordSalt;
 }

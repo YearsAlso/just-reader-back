@@ -7,9 +7,9 @@ spring:
       username: @nacos.username@
       password: @nacos.password@
       discovery:
-        server-addr: http://just-reader-nacos:38848
+        server-addr: just-reader-nacos:18848
       config:
-        server-addr: http://just-reader-nacos:38848
+        server-addr: just-reader-nacos:18848
         file-extension: yaml
   config:
     import:

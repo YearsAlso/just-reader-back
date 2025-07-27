@@ -33,11 +33,11 @@ services:
     networks:
       just-reader-network:
         ipv4_address: 172.172.0.51
-  # activemq
+  # rabbitmq
   just-reader-mq:
     image: rabbitmq:management
     container_name: just-reader-rabbitmq
-    hostname: rabbitmq
+    hostname: rabbitmq:latest
     restart: always
     ports:
       - "5672:5672"
@@ -56,11 +56,11 @@ services:
   just-reader-nacos:
     container_name: just-reader-nacos
     hostname: nacos
-    image: nacos/nacos-server:v3.0.2
+    image: nacos/nacos-server:latest
     ports:
-      - "28080:8080"
-      - "8848:8848"
-      - "9848:9848"
+      - "18888:8080"
+      - "18848:8848"
+      - "19848:9848"
     environment:
       - PREFER_HOST_MODE=hostname
       - MODE=standalone
@@ -69,7 +69,6 @@ services:
       - NACOS_AUTH_TOKEN=VGhpc0lzTXlDdXN0b21TZWNyZXRLZXkwMTIzNDU2Nzg=
     volumes:
       - ./deploy/just-reader-nacos/logs:/home/nacos/logs
-      - ./deploy/just-reader-nacos/conf/application.properties:/home/nacos/conf/application.properties
     restart: on-failure
     networks:
       just-reader-network:
