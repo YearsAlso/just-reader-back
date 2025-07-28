@@ -2,8 +2,8 @@ package com.yearsalso.file.controller;
 
 
 import com.yearsalso.common.constant.SettingsConstant;
-import com.yearsalso.data.entity.FmsFile;
-import com.yearsalso.data.entity.CmsSetting;
+import com.yearsalso.data.entity.File;
+import com.yearsalso.data.entity.Setting;
 import com.yearsalso.data.service.IFmsFileService;
 import com.yearsalso.data.service.ICmsSettingService;
 import com.yearsalso.file.FileManageFactory;
@@ -58,7 +58,7 @@ public class DownloadController {
     public Object downloadFile(@RequestParam("id") String id, HttpServletResponse response) {
         try {
             // 从数据库中获取文件信息
-            FmsFile file = fmsFileService.getById(id);
+            File file = fmsFileService.getById(id);
             if (file == null) {
                 log.error("file is not exist");
                 return null;
@@ -86,7 +86,7 @@ public class DownloadController {
     public Object downloadFileByKey(@RequestParam("key") String key, HttpServletResponse response) {
         try {
             // 从数据库中获取文件信息
-            FmsFile file = fmsFileService.getByKey(key);
+            File file = fmsFileService.getByKey(key);
 
             String fileUrl;
 
@@ -94,7 +94,7 @@ public class DownloadController {
             if (file == null) {
                 log.warn("file is not exist");
                 fileUrl = Base64.decodeStr(key);
-                CmsSetting setting = cmsSettingService.selectOneBySettingKey(SettingsConstant.OSS_USED);
+                Setting setting = cmsSettingService.selectOneBySettingKey(SettingsConstant.OSS_USED);
                 storeType = setting.getSettingValue();
             } else {
                 // 获取文件的 URL 地址

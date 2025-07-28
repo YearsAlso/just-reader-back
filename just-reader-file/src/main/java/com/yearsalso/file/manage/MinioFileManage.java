@@ -5,16 +5,13 @@ package com.yearsalso.file.manage;
 import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.dto.FmsSettingDto;
-import com.yearsalso.data.entity.CmsSetting;
+import com.yearsalso.data.entity.Setting;
 import com.yearsalso.data.mapper.CmsSettingMapper;
 import com.yearsalso.file.dto.MinioBucketPolicyConfigDto;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
-import com.alibaba.cloud.commons.lang.StringUtils;
-import com.alibaba.nacos.shaded.com.google.gson.Gson;
 import io.minio.*;
-import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +37,7 @@ public class MinioFileManage implements FileManage {
 
     @Override
     public FmsSettingDto getFmsSetting() {
-        CmsSetting setting = settingDao.selectOneBySettingKey(StoreTypeConstant.MINIO_OSS);
+        Setting setting = settingDao.selectOneBySettingKey(StoreTypeConstant.MINIO_OSS);
         String settingValue = setting.getSettingValue();
         if (StrUtil.isBlankOrUndefined(settingValue) || !JSONUtil.isTypeJSON(settingValue)) {
             throw new ApiException("您还未配置MinIO存储");

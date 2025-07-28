@@ -1,6 +1,6 @@
 package com.yearsalso.data.service.impl;
 
-import com.yearsalso.data.entity.MmsChannelSubscriber;
+import com.yearsalso.data.entity.MessageChannelSubscriber;
 import com.yearsalso.data.mapper.MmsChannelSubscriberMapper;
 import com.yearsalso.data.service.IMmsChannelSubscriberService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2024-08-12
  */
 @Service("mmsChannelSubscriberService")
-public class MmsChannelSubscriberServiceImpl extends ServiceImpl<MmsChannelSubscriberMapper, MmsChannelSubscriber> implements IMmsChannelSubscriberService {
+public class MmsChannelSubscriberServiceImpl extends ServiceImpl<MmsChannelSubscriberMapper, MessageChannelSubscriber> implements IMmsChannelSubscriberService {
 
 }

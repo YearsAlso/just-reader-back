@@ -7,7 +7,7 @@ import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.mapper.FmsFileMapper;
 import com.yearsalso.data.mapper.CmsSettingMapper;
-import com.yearsalso.data.entity.CmsSetting;
+import com.yearsalso.data.entity.Setting;
 import com.yearsalso.file.manage.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -59,9 +59,9 @@ public class FileManageFactory {
     }
 
     public FileManage getFileManage() {
-        CmsSetting setting = cmsSettingMapper.selectOneBySettingKey(SettingsConstant.OSS_USED);
+        Setting setting = cmsSettingMapper.selectOneBySettingKey(SettingsConstant.OSS_USED);
         if (setting == null || StrUtil.isBlank(setting.getSettingValue())) {
-            setting = new CmsSetting();
+            setting = new Setting();
             setting.setSettingKey(SettingsConstant.OSS_USED);
             setting.setSettingValue(StoreTypeConstant.LOCAL_OSS);
             cmsSettingMapper.insert(setting);

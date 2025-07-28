@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yearsalso.data.mapper.FmsFileMapper">
 
-    <select id="selectOneByFileKey" resultType="com.yearsalso.data.entity.FmsFile">
+    <select id="selectOneByFileKey" resultType="com.yearsalso.data.entity.File">
         select *
         from fms_file
         where file_key = #{fileKey}
@@ -11,7 +11,7 @@
         limit 1
     </select>
 
-    <select id="selectByFilePath" resultType="com.yearsalso.data.entity.FmsFile">
+    <select id="selectByFilePath" resultType="com.yearsalso.data.entity.File">
         select *
         from fms_file
         where location_path = #{filePath}

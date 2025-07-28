@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 用户-角色权限
+ * 用户-用户角色
  * </p>
  *
  * @author els
@@ -20,20 +20,20 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "ums_role_permission")
-@TableName("ums_role_permission")
-@Schema(description = "用户-角色权限")
-public class UmsRolePermission extends BaseEntity implements Serializable {
-
-    /**
-     * 权限ID
-     */
-    @Schema(description = "权限ID")
-    private Long permissionId;
+@Table(name = "user_role")
+@TableName("user_role")
+@Schema(description = "用户-用户角色")
+public class UserRole extends BaseEntity implements Serializable {
 
     /**
      * 角色ID
      */
     @Schema(description = "角色ID")
     private Long roleId;
+
+    /**
+     * 用户ID
+     */
+    @Schema(description = "用户ID")
+    private Long userId;
 }

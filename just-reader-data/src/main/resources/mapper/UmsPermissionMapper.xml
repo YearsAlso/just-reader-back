@@ -16,7 +16,7 @@
         where id = #{id} AND del_flag = 0
     </update>
 
-    <select id="selectListByUserId" resultType="com.yearsalso.data.entity.UmsPermission">
+    <select id="selectListByUserId" resultType="com.yearsalso.data.entity.UserPermission">
         SELECT p.*
         FROM ums_user u
                  JOIN

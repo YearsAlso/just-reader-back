@@ -5,8 +5,8 @@ import com.yearsalso.common.api.CommonResult;
 import com.yearsalso.common.api.ResultCode;
 import com.yearsalso.common.constant.SettingsConstant;
 import com.yearsalso.common.exception.ApiException;
-import com.yearsalso.data.entity.CmsSetting;
-import com.yearsalso.data.entity.FmsFile;
+import com.yearsalso.data.entity.Setting;
+import com.yearsalso.data.entity.File;
 import com.yearsalso.data.service.ICmsSettingService;
 import com.yearsalso.data.service.IFmsFileService;
 import com.yearsalso.file.FileManageFactory;
@@ -55,7 +55,7 @@ public class UploadController {
      *
      * @return
      */
-    String getStoreType(CmsSetting setting) {
+    String getStoreType(Setting setting) {
         if (setting == null || StrUtil.isBlank(setting.getSettingValue())) {
             throw new ApiException("您还未配置OSS存储服务");
         }
@@ -71,18 +71,18 @@ public class UploadController {
             @Parameter(name = "base64", description = "文件base64，为空不校验"),
             @Parameter(name = "filePath", description = "文件路径")
     })
-    public CommonResult<FmsFile> upload(@RequestPart MultipartFile file,
-                                        @RequestPart(required = false) String base64,
-                                        @RequestPart(required = false) String filePath,
-                                        @RequestParam(required = false, defaultValue = "true") Boolean isCover,
-                                        @RequestParam(required = false, defaultValue = "false") Boolean pathContainsFileName
+    public CommonResult<File> upload(@RequestPart MultipartFile file,
+                                     @RequestPart(required = false) String base64,
+                                     @RequestPart(required = false) String filePath,
+                                     @RequestParam(required = false, defaultValue = "true") Boolean isCover,
+                                     @RequestParam(required = false, defaultValue = "false") Boolean pathContainsFileName
     ) {
         if (StrUtil.isNotBlank(base64)) {
             // base64上传
             file = Base64DecodeMultipartFile.base64Convert(base64);
         }
 
-        CmsSetting setting = cmsSettingService.selectOneBySettingKey(SettingsConstant.OSS_USED);
+        Setting setting = cmsSettingService.selectOneBySettingKey(SettingsConstant.OSS_USED);
         if (setting == null) {
             return CommonResult.failed(ResultCode.FAILED, "Lost setting that your configured with OSS storage service");
         }
@@ -107,7 +107,7 @@ public class UploadController {
             localPath = filePath + originalFilename;
         }
         if (!isCover) {
-            FmsFile fmsFile = fmsFileService.getByKey(Base64.encode(localPath));
+            File fmsFile = fmsFileService.getByKey(Base64.encode(localPath));
             if (fmsFile != null) {
                 return CommonResult.success(fmsFile);
             }
@@ -125,7 +125,7 @@ public class UploadController {
                             file
                     );
 
-            FmsFile fmsFile = fmsFileService.getByKey(Base64.encode(localPath));
+            File fmsFile = fmsFileService.getByKey(Base64.encode(localPath));
 
             if (fmsFile != null) {
                 fmsFile.setUpdateAt(new Date());
@@ -133,7 +133,7 @@ public class UploadController {
                 return CommonResult.success(fmsFile);
             }
 
-            fmsFile = new FmsFile()
+            fmsFile = new File()
                     // 指定ossParam或者为当前的第一个OSS配置
                     .setLocationPath(localPath)
                     // 保存数据信息至数据库
@@ -181,7 +181,7 @@ public class UploadController {
             folderPath = folderPath.endsWith("/") ? folderPath : folderPath + "/";
         }
 
-        CmsSetting setting = cmsSettingService.selectOneBySettingKey(SettingsConstant.OSS_USED);
+        Setting setting = cmsSettingService.selectOneBySettingKey(SettingsConstant.OSS_USED);
         if (setting == null) {
             return CommonResult.failed(ResultCode.FAILED, "Lost setting that your configured with OSS storage service");
         }
@@ -207,7 +207,7 @@ public class UploadController {
                                 file
                         );
 
-                FmsFile newFile = new FmsFile()
+                File newFile = new File()
                         .setLocationPath(localPath)
                         .setFileName(file.getOriginalFilename())
                         .setFileSize(file.getSize())

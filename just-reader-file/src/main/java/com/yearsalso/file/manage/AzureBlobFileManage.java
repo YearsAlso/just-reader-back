@@ -3,14 +3,11 @@ package com.yearsalso.file.manage;
 import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.dto.FmsSettingDto;
-import com.yearsalso.data.entity.CmsSetting;
+import com.yearsalso.data.entity.Setting;
 import com.yearsalso.data.mapper.CmsSettingMapper;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.azure.storage.blob.*;
-import com.azure.storage.blob.models.BlobHttpHeaders;
-import com.azure.storage.blob.models.BlobItem;
-import com.azure.storage.blob.models.BlobProperties;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +33,7 @@ public class AzureBlobFileManage implements FileManage {
     @Override
     public FmsSettingDto getFmsSetting() {
         // Implement this method to return your FmsSettingDto
-        CmsSetting setting = settingDao.selectOneBySettingKey(StoreTypeConstant.AZURE_BLOB_OSS);
+        Setting setting = settingDao.selectOneBySettingKey(StoreTypeConstant.AZURE_BLOB_OSS);
         String settingValue = setting.getSettingValue();
         if (StrUtil.isBlankOrUndefined(settingValue) || !JSONUtil.isTypeJSON(settingValue)) {
             throw new ApiException("您还未配置MinIO存储");

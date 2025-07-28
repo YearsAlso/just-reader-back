@@ -21,10 +21,10 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "cms_dict_data")
-@TableName("cms_dict_data")
+@Table(name = "dict_data")
+@TableName("dict_data")
 @Schema(description = "内容-数据字典内容")
-public class CmsDictData extends BaseEntity implements Serializable {
+public class DictData extends BaseEntity implements Serializable {
 
     /**
      * 描述

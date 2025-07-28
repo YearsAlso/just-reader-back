@@ -1,7 +1,7 @@
 package com.yearsalso.data.service;
 
 
-import com.yearsalso.data.entity.MmsChannel;
+import com.yearsalso.data.entity.MessageChannel;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -12,6 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author els
  * @since 2024-08-12
  */
-public interface IMmsChannelService extends IService<MmsChannel> {
+public interface IMmsChannelService extends IService<MessageChannel> {
 
 }

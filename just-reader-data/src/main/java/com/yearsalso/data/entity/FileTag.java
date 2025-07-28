@@ -20,10 +20,10 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "fms_file_tag")
-@TableName("fms_file_tag")
+@Table(name = "file_tag")
+@TableName("file_tag")
 @Schema(description = "文件-文件标签")
-public class FmsFileTag extends BaseEntity implements Serializable {
+public class FileTag extends BaseEntity implements Serializable {
 
     /**
      * 文件 Id

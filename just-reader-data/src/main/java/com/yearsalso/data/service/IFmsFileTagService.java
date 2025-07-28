@@ -1,6 +1,6 @@
 package com.yearsalso.data.service;
 
-import com.yearsalso.data.entity.FmsFileTag;
+import com.yearsalso.data.entity.FileTag;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author els
  * @since 2024-08-12
  */
-public interface IFmsFileTagService extends IService<FmsFileTag> {
+public interface IFmsFileTagService extends IService<FileTag> {
 
 }

@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 消息-消息
+ * 内容-设置
  * </p>
  *
  * @author els
@@ -20,22 +20,10 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "mms_message")
-@TableName("mms_message")
-@Schema(description = "消息-消息")
-public class MmsMessage extends BaseEntity implements Serializable {
-
-    /**
-     * 是否撤销
-     */
-    @Schema(description = "是否撤销")
-    private Integer isUndo;
-
-    /**
-     * 内容
-     */
-    @Schema(description = "内容")
-    private String content;
+@Table(name = "setting")
+@TableName("setting")
+@Schema(description = "内容-设置")
+public class Setting extends BaseEntity implements Serializable {
 
     /**
      * 标题
@@ -44,8 +32,14 @@ public class MmsMessage extends BaseEntity implements Serializable {
     private String title;
 
     /**
-     * 类型
+     * 值
      */
-    @Schema(description = "类型")
-    private String type;
+    @Schema(description = "值")
+    private String settingValue;
+
+    /**
+     * 键
+     */
+    @Schema(description = "键")
+    private String settingKey;
 }

@@ -4,12 +4,11 @@ package com.yearsalso.file.manage;
 import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.dto.FmsSettingDto;
-import com.yearsalso.data.entity.CmsSetting;
+import com.yearsalso.data.entity.Setting;
 import com.yearsalso.data.mapper.CmsSettingMapper;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
-import com.alibaba.nacos.shaded.com.google.gson.Gson;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +31,7 @@ public class LocalFileManage implements FileManage {
     @SneakyThrows
     @Override
     public FmsSettingDto getFmsSetting() {
-        CmsSetting setting = settingDao.selectOneBySettingKey(StoreTypeConstant.LOCAL_OSS);
+        Setting setting = settingDao.selectOneBySettingKey(StoreTypeConstant.LOCAL_OSS);
         String settingValue = setting.getSettingValue();
         if (StrUtil.isBlankOrUndefined(settingValue) || !JSONUtil.isTypeJSON(settingValue)) {
             throw new ApiException("您还未配置本地存储");

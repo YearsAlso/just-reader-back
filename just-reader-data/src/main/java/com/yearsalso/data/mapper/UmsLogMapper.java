@@ -1,6 +1,6 @@
 package com.yearsalso.data.mapper;
 
-import com.yearsalso.data.entity.UmsLog;
+import com.yearsalso.data.entity.UserLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2024-08-12
  */
 @Mapper
-public interface UmsLogMapper extends BaseMapper<UmsLog> {
+public interface UmsLogMapper extends BaseMapper<UserLog> {
 
 }

@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 用户-用户角色
+ * 消息-订阅者
  * </p>
  *
  * @author els
@@ -20,20 +20,26 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "ums_user_role")
-@TableName("ums_user_role")
-@Schema(description = "用户-用户角色")
-public class UmsUserRole extends BaseEntity implements Serializable {
+@Table(name = "channel_subscriber")
+@TableName("channel_subscriber")
+@Schema(description = "消息-订阅者")
+public class MessageChannelSubscriber extends BaseEntity implements Serializable {
 
     /**
-     * 角色ID
+     * 频道ID
      */
-    @Schema(description = "角色ID")
-    private Long roleId;
+    @Schema(description = "频道ID")
+    private Long channelId;
 
     /**
-     * 用户ID
+     * 频道编号
      */
-    @Schema(description = "用户ID")
+    @Schema(description = "频道编号")
+    private String channelCode;
+
+    /**
+     * 用户id
+     */
+    @Schema(description = "用户id")
     private Long userId;
 }

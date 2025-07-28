@@ -1,6 +1,6 @@
 package com.yearsalso.data.service.impl;
 
-import com.yearsalso.data.entity.CmsDictData;
+import com.yearsalso.data.entity.DictData;
 import com.yearsalso.data.mapper.CmsDictDataMapper;
 import com.yearsalso.data.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2024-08-12
  */
 @Service("cmsDictDataService")
-public class CmsDictDataServiceImpl extends ServiceImpl<CmsDictDataMapper, CmsDictData> implements ICmsDictDataService {
+public class CmsDictDataServiceImpl extends ServiceImpl<CmsDictDataMapper, DictData> implements ICmsDictDataService {
 
 }

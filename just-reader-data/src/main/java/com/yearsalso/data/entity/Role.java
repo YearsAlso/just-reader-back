@@ -20,10 +20,10 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "ums_role")
-@TableName("ums_role")
+@Table(name = "role")
+@TableName("role")
 @Schema(description = "用户-角色")
-public class UmsRole extends BaseEntity implements Serializable {
+public class Role extends BaseEntity implements Serializable {
 
     /**
      * 数据类型

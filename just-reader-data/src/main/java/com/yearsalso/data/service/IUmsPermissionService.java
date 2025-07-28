@@ -1,6 +1,6 @@
 package com.yearsalso.data.service;
 
-import com.yearsalso.data.entity.UmsPermission;
+import com.yearsalso.data.entity.UserPermission;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author els
  * @since 2024-08-12
  */
-public interface IUmsPermissionService extends IService<UmsPermission> {
+public interface IUmsPermissionService extends IService<UserPermission> {
 
 }

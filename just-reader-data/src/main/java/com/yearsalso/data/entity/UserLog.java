@@ -20,10 +20,10 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "ums_log")
-@TableName("ums_log")
+@Table(name = "log")
+@TableName("log")
 @Schema(description = "用户-日志")
-public class UmsLog extends BaseEntity implements Serializable {
+public class UserLog extends BaseEntity implements Serializable {
 
     /**
      * Ip

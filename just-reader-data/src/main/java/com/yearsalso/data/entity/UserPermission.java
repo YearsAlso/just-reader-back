@@ -21,10 +21,10 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "ums_permission")
-@TableName("ums_permission")
+@Table(name = "permission")
+@TableName("permission")
 @Schema(description = "用户-权限")
-public class UmsPermission extends BaseEntity implements Serializable {
+public class UserPermission extends BaseEntity implements Serializable {
 
     /**
      * 操作

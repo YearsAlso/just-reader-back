@@ -2,44 +2,47 @@ package com.yearsalso.data.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * <p>
- * 消息-订阅者
+ * 内容-数据字典
  * </p>
  *
  * @author els
  * @since 2024-08-12
  */
 @Data
+@Entity
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "mms_channel_subscriber")
-@TableName("mms_channel_subscriber")
-@Schema(description = "消息-订阅者")
-public class MmsChannelSubscriber extends BaseEntity implements Serializable {
+@Table(name = "dict")
+@TableName("dict")
+@Schema(description = "内容-数据字典")
+public class Dict extends BaseEntity implements Serializable {
 
     /**
-     * 频道ID
+     * 顺序
      */
-    @Schema(description = "频道ID")
-    private Long channelId;
+    @Schema(description = "顺序")
+    private BigDecimal sortOrder;
 
     /**
-     * 频道编号
+     * 标题
      */
-    @Schema(description = "频道编号")
-    private String channelCode;
+    @Schema(description = "标题")
+    private String title;
 
     /**
-     * 用户id
+     * 类型
      */
-    @Schema(description = "用户id")
-    private Long userId;
+    @Schema(description = "类型")
+    private String type;
 }

@@ -1,6 +1,6 @@
 package com.yearsalso.data.mapper;
 
-import com.yearsalso.data.entity.FmsFile;
+import com.yearsalso.data.entity.File;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,9 +13,9 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2024-08-12
  */
 @Mapper
-public interface FmsFileMapper extends BaseMapper<FmsFile> {
+public interface FmsFileMapper extends BaseMapper<File> {
 
-    FmsFile selectOneByFileKey(String fileKey);
+    File selectOneByFileKey(String fileKey);
 
-    FmsFile selectByFilePath(String filePath);
+    File selectByFilePath(String filePath);
 }

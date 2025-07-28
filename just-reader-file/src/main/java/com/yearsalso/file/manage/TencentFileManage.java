@@ -3,7 +3,7 @@ package com.yearsalso.file.manage;
 import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.dto.FmsSettingDto;
-import com.yearsalso.data.entity.CmsSetting;
+import com.yearsalso.data.entity.Setting;
 import com.yearsalso.data.mapper.CmsSettingMapper;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.shaded.com.google.gson.Gson;
@@ -38,7 +38,7 @@ public class TencentFileManage implements FileManage{
 
     @Override
     public FmsSettingDto getFmsSetting() {
-        CmsSetting setting = settingService.selectOneBySettingKey(StoreTypeConstant.TENCENT_OSS);
+        Setting setting = settingService.selectOneBySettingKey(StoreTypeConstant.TENCENT_OSS);
         if (setting == null || StrUtil.isBlank(setting.getSettingValue())) {
             throw new ApiException("您还未配置腾讯云COS存储");
         }

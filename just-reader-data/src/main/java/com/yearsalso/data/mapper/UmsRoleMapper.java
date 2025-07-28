@@ -1,6 +1,6 @@
 package com.yearsalso.data.mapper;
 
-import com.yearsalso.data.entity.UmsRole;
+import com.yearsalso.data.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2024-08-12
  */
 @Mapper
-public interface UmsRoleMapper extends BaseMapper<UmsRole> {
+public interface UmsRoleMapper extends BaseMapper<Role> {
 
 }

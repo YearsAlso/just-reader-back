@@ -5,7 +5,7 @@ import com.yearsalso.common.api.CommonSearch;
 import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.dto.CommonPage;
-import com.yearsalso.data.entity.FmsFile;
+import com.yearsalso.data.entity.File;
 import com.yearsalso.data.service.IFmsFileService;
 import com.yearsalso.file.FileManageFactory;
 import com.yearsalso.file.manage.LocalFileManage;
@@ -51,11 +51,11 @@ public class FileController {
             @Parameter(name = "searchVo", description = "搜索信息"),
             @Parameter(name = "pageVo", description = "分页信息")
     })
-    public CommonResult<CommonPage<FmsFile>> getFileList(@ModelAttribute FmsFile file,
-                                                         @ModelAttribute CommonSearch searchVo,
-                                                         @ModelAttribute IPage<FmsFile> pageVo) {
+    public CommonResult<CommonPage<File>> getFileList(@ModelAttribute File file,
+                                                      @ModelAttribute CommonSearch searchVo,
+                                                      @ModelAttribute IPage<File> pageVo) {
 
-        CommonPage<FmsFile> page = fmsFileService.findByCondition(file, searchVo, pageVo);
+        CommonPage<File> page = fmsFileService.findByCondition(file, searchVo, pageVo);
         return CommonResult.success(page);
     }
 
@@ -65,7 +65,7 @@ public class FileController {
     public CommonResult<Object> copy(@RequestParam String id,
                                      @RequestParam String key) throws Exception {
 
-        FmsFile file = fmsFileService.getById(id);
+        File file = fmsFileService.getById(id);
         String toKey = "copy_" + key;
         if (file.getLocationPath() == null) {
             return CommonResult.failed("存储位置未知");
@@ -77,7 +77,7 @@ public class FileController {
         }
         String newUrl = fileManageFactory.getFileManage().copyFile(key, toKey);
 
-        FmsFile newFile = new FmsFile();
+        File newFile = new File();
         newFile.setFileName(file.getFileName());
         newFile.setFileKey(toKey);
         newFile.setFileSize(file.getFileSize());
@@ -98,7 +98,7 @@ public class FileController {
                                        @RequestParam String newKey,
                                        @RequestParam String newName) throws Exception {
 
-        FmsFile file = fmsFileService.getById(id);
+        File file = fmsFileService.getById(id);
         if (file.getLocationPath() == null) {
             return CommonResult.failed("存储位置未知");
         }
@@ -126,7 +126,7 @@ public class FileController {
     public CommonResult<Object> delete(@PathVariable String[] ids) {
 
         for (String id : ids) {
-            FmsFile file = fmsFileService.getById(id);
+            File file = fmsFileService.getById(id);
             if (file.getLocationPath() == null) {
                 return CommonResult.failed("存储位置未知");
             }
@@ -148,7 +148,7 @@ public class FileController {
     })
     public void view(@PathVariable String id, HttpServletResponse response) throws IOException {
 
-        FmsFile file = fmsFileService.getById(id);
+        File file = fmsFileService.getById(id);
         if (file == null) {
             throw new ApiException("文件ID:" + id + "不存在");
         }

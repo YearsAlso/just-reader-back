@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yearsalso.data.mapper.UmsUserMapper">
 
-    <select id="selectOneByUsername" resultType="com.yearsalso.data.entity.UmsUser">
+    <select id="selectOneByUsername" resultType="com.yearsalso.data.entity.User">
         SELECT *
         FROM ums_user
         WHERE username = #{username} AND del_flag = 0
@@ -10,7 +10,7 @@
         LIMIT 1
     </select>
 
-    <select id="selectOneByUsernameOrEmailOrMobile" resultType="com.yearsalso.data.entity.UmsUser">
+    <select id="selectOneByUsernameOrEmailOrMobile" resultType="com.yearsalso.data.entity.User">
         SELECT *
         FROM ums_user
         WHERE del_flag = 0

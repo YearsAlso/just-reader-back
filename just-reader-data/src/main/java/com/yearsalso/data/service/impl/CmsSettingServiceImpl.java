@@ -1,6 +1,6 @@
 package com.yearsalso.data.service.impl;
 
-import com.yearsalso.data.entity.CmsSetting;
+import com.yearsalso.data.entity.Setting;
 import com.yearsalso.data.mapper.CmsSettingMapper;
 import com.yearsalso.data.service.ICmsSettingService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -19,17 +19,17 @@ import org.springframework.stereotype.Service;
  */
 @Service("cmsSettingService")
 @EnableCaching
-public class CmsSettingServiceImpl extends ServiceImpl<CmsSettingMapper, CmsSetting> implements ICmsSettingService {
+public class CmsSettingServiceImpl extends ServiceImpl<CmsSettingMapper, Setting> implements ICmsSettingService {
 
 
     @Override
     @Cacheable(value = "cmsSettingService", key = "#settingKey")
-    public CmsSetting selectOneBySettingKey(String settingKey) {
+    public Setting selectOneBySettingKey(String settingKey) {
         if (settingKey == null) {
             return null;
         }
 
-        CmsSetting cmsSetting = null;
+        Setting cmsSetting = null;
         try {
             cmsSetting = this.baseMapper.selectOneBySettingKey(settingKey);
         } catch (Exception e) {
@@ -55,7 +55,7 @@ public class CmsSettingServiceImpl extends ServiceImpl<CmsSettingMapper, CmsSett
 
     @Override
     @CacheEvict(value = "cmsSettingService", key = "#settingKey")
-    public void updateOneBySettingKey(String settingKey, CmsSetting setting) {
+    public void updateOneBySettingKey(String settingKey, Setting setting) {
         if (settingKey == null || setting == null) {
             return;
         }

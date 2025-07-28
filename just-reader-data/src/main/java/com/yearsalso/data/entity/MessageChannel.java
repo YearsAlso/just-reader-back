@@ -20,10 +20,10 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "mms_channel")
-@TableName("mms_channel")
+@Table(name = "channel")
+@TableName("channel")
 @Schema(description = "消息-通道")
-public class MmsChannel extends BaseEntity implements Serializable {
+public class MessageChannel extends BaseEntity implements Serializable {
 
     /**
      * 名称

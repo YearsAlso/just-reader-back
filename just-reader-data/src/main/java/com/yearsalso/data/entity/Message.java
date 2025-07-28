@@ -2,37 +2,40 @@ package com.yearsalso.data.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * <p>
- * 内容-数据字典
+ * 消息-消息
  * </p>
  *
  * @author els
  * @since 2024-08-12
  */
 @Data
-@Entity
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@Table(name = "cms_dict")
-@TableName("cms_dict")
-@Schema(description = "内容-数据字典")
-public class CmsDict extends BaseEntity implements Serializable {
+@Table(name = "message")
+@TableName("message")
+@Schema(description = "消息-消息")
+public class Message extends BaseEntity implements Serializable {
 
     /**
-     * 顺序
+     * 是否撤销
      */
-    @Schema(description = "顺序")
-    private BigDecimal sortOrder;
+    @Schema(description = "是否撤销")
+    private Integer isUndo;
+
+    /**
+     * 内容
+     */
+    @Schema(description = "内容")
+    private String content;
 
     /**
      * 标题

@@ -2,7 +2,7 @@ package com.yearsalso.data.service.impl;
 
 import com.yearsalso.common.api.CommonSearch;
 import com.yearsalso.data.dto.CommonPage;
-import com.yearsalso.data.entity.FmsFile;
+import com.yearsalso.data.entity.File;
 import com.yearsalso.data.mapper.FmsFileMapper;
 import com.yearsalso.data.service.IFmsFileService;
 import com.yearsalso.data.utils.PageUtils;
@@ -22,11 +22,11 @@ import org.springframework.stereotype.Service;
  * @since 2024-08-12
  */
 @Service("fmsFileService")
-public class FmsFileServiceImpl extends ServiceImpl<FmsFileMapper, FmsFile> implements IFmsFileService {
+public class FmsFileServiceImpl extends ServiceImpl<FmsFileMapper, File> implements IFmsFileService {
 
     @Override
-    public CommonPage<FmsFile> findByCondition(FmsFile file, CommonSearch searchVo, IPage<FmsFile> pageVo) {
-        QueryWrapper<FmsFile> queryWrapper = new QueryWrapper<>();
+    public CommonPage<File> findByCondition(File file, CommonSearch searchVo, IPage<File> pageVo) {
+        QueryWrapper<File> queryWrapper = new QueryWrapper<>();
 
         if (file != null) {
 
@@ -59,7 +59,7 @@ public class FmsFileServiceImpl extends ServiceImpl<FmsFileMapper, FmsFile> impl
         }
 
 
-        IPage<FmsFile> fmsFileIPage = baseMapper.selectPage(pageVo, queryWrapper);
+        IPage<File> fmsFileIPage = baseMapper.selectPage(pageVo, queryWrapper);
 
         return PageUtils.coverCommonPage(fmsFileIPage);
 
@@ -68,11 +68,11 @@ public class FmsFileServiceImpl extends ServiceImpl<FmsFileMapper, FmsFile> impl
 
     @Override
     @Cacheable(value = "fmsFile", key = "#fileKey")
-    public FmsFile getByKey(String fileKey) {
-        QueryWrapper<FmsFile> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(FmsFile::getFileKey, fileKey);
-        queryWrapper.lambda().ne(FmsFile::getDelFlag, 1);
-        queryWrapper.lambda().orderByDesc(FmsFile::getCreateAt);
+    public File getByKey(String fileKey) {
+        QueryWrapper<File> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(File::getFileKey, fileKey);
+        queryWrapper.lambda().ne(File::getDelFlag, 1);
+        queryWrapper.lambda().orderByDesc(File::getCreateAt);
         queryWrapper.last("limit 1");
 
         return baseMapper.selectOne(queryWrapper);
@@ -80,18 +80,18 @@ public class FmsFileServiceImpl extends ServiceImpl<FmsFileMapper, FmsFile> impl
 
     @CacheEvict(value = "fmsFile", key = "#fileKey")
     public Boolean removeByKey(String fileKey) {
-        QueryWrapper<FmsFile> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<File> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("file_key", fileKey);
 
         return baseMapper.delete(queryWrapper) > 0;
     }
 
     @Override
-    public FmsFile findFirstByFileKey(String encode) {
-        QueryWrapper<FmsFile> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(FmsFile::getFileKey, encode);
-        queryWrapper.lambda().eq(FmsFile::getDelFlag, 0);
-        queryWrapper.lambda().orderByDesc(FmsFile::getCreateAt);
+    public File findFirstByFileKey(String encode) {
+        QueryWrapper<File> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(File::getFileKey, encode);
+        queryWrapper.lambda().eq(File::getDelFlag, 0);
+        queryWrapper.lambda().orderByDesc(File::getCreateAt);
         queryWrapper.last("limit 1");
         return baseMapper.selectOne(queryWrapper);
     }

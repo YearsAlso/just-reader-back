@@ -2,7 +2,7 @@ package com.yearsalso.data.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yearsalso.data.entity.UmsUser;
+import com.yearsalso.data.entity.User;
 
 /**
  * <p>
@@ -12,7 +12,7 @@ import com.yearsalso.data.entity.UmsUser;
  * @author els
  * @since 2024-08-12
  */
-public interface IUmsUserService extends IService<UmsUser> {
+public interface IUmsUserService extends IService<User> {
 
 
 }

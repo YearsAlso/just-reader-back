@@ -1,6 +1,6 @@
 package com.yearsalso.data.mapper;
 
-import com.yearsalso.data.entity.UmsUser;
+import com.yearsalso.data.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import jakarta.annotation.Nullable;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,7 +14,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2024-08-12
  */
 @Mapper
-public interface UmsUserMapper extends BaseMapper<UmsUser> {
+public interface UmsUserMapper extends BaseMapper<User> {
 
     /**
      * 根据用户名称获得用户
@@ -22,7 +22,7 @@ public interface UmsUserMapper extends BaseMapper<UmsUser> {
      * @param username
      * @return
      */
-    UmsUser selectOneByUsername(String username);
+    User selectOneByUsername(String username);
 
     /**
      * 根据用户名查询用户
@@ -30,7 +30,7 @@ public interface UmsUserMapper extends BaseMapper<UmsUser> {
      * @param input 输入内容
      * @return 用户
      */
-    UmsUser selectOneByUsernameOrEmailOrMobile(String input);
+    User selectOneByUsernameOrEmailOrMobile(String input);
 
     /**
      * 根据用户名查询用户

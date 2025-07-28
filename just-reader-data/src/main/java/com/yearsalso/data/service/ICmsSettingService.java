@@ -2,7 +2,7 @@ package com.yearsalso.data.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yearsalso.data.entity.CmsSetting;
+import com.yearsalso.data.entity.Setting;
 
 /**
  * <p>
@@ -12,12 +12,12 @@ import com.yearsalso.data.entity.CmsSetting;
  * @author els
  * @since 2024-08-12
  */
-public interface ICmsSettingService extends IService<CmsSetting> {
-    CmsSetting selectOneBySettingKey(String settingKey);
+public interface ICmsSettingService extends IService<Setting> {
+    Setting selectOneBySettingKey(String settingKey);
 
     void updateBySettingKey(String settingKey, String settingValue);
 
-    void updateOneBySettingKey(String settingKey, CmsSetting setting);
+    void updateOneBySettingKey(String settingKey, Setting setting);
 
     void deleteOneBySettingKey(String settingKey);
 }

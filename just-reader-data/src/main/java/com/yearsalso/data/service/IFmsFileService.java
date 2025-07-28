@@ -4,7 +4,7 @@ import com.yearsalso.common.api.CommonSearch;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.yearsalso.data.dto.CommonPage;
-import com.yearsalso.data.entity.FmsFile;
+import com.yearsalso.data.entity.File;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @author els
  * @since 2024-08-12
  */
-public interface IFmsFileService extends IService<FmsFile> {
+public interface IFmsFileService extends IService<File> {
 
 
     /**
@@ -26,10 +26,10 @@ public interface IFmsFileService extends IService<FmsFile> {
      * @param pageVo
      * @return
      */
-    CommonPage<FmsFile> findByCondition(
-            FmsFile file,
+    CommonPage<File> findByCondition(
+            File file,
             CommonSearch searchVo,
-            IPage<FmsFile> pageVo
+            IPage<File> pageVo
     );
 
     /**
@@ -39,7 +39,7 @@ public interface IFmsFileService extends IService<FmsFile> {
      * @return
      */
     @Schema(description = "根据文件key获取文件信息")
-    FmsFile getByKey(String fileKey);
+    File getByKey(String fileKey);
 
     /**
      * 根据文件key删除文件
@@ -57,5 +57,5 @@ public interface IFmsFileService extends IService<FmsFile> {
      * @return
      */
     @Schema(description = "根据文件key获取文件信息")
-    FmsFile findFirstByFileKey(String encode);
+    File findFirstByFileKey(String encode);
 }

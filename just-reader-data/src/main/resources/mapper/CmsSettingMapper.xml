@@ -18,7 +18,7 @@
         WHERE setting_key = #{settingKey} AND del_flag != 1
     </delete>
 
-    <select id="selectOneBySettingKey" resultType="com.yearsalso.data.entity.CmsSetting">
+    <select id="selectOneBySettingKey" resultType="com.yearsalso.data.entity.Setting">
         SELECT *
         FROM cms_setting
         WHERE setting_key = #{settingKey}
