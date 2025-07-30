@@ -1,7 +1,7 @@
 version: "3"
 services:
   just-reader-monitor:
-    image: just-reader-back/just-reader-monitor:${IMG_VERSION}
+    image: registry.cn-hangzhou.aliyuncs.com/years-also/just-reader-monitor:${IMG_VERSION}
     build:
       context: ./just-reader-monitor
       dockerfile: Dockerfile
@@ -13,7 +13,7 @@ services:
       just-reader-network:
         ipv4_address: 172.172.0.11
   just-reader-auth:
-    image: just-reader-back/just-reader-auth:${IMG_VERSION}
+    image: registry.cn-hangzhou.aliyuncs.com/years-also/just-reader-auth:${IMG_VERSION}
     build:
       context: ./just-reader-auth
       dockerfile: Dockerfile
@@ -27,7 +27,7 @@ services:
       just-reader-network:
         ipv4_address: 172.172.0.12
   just-reader-gateway:
-    image: just-reader-back/just-reader-gateway:${IMG_VERSION}
+    image: registry.cn-hangzhou.aliyuncs.com/years-also/just-reader-gateway:${IMG_VERSION}
     build:
       context: ./just-reader-gateway
       dockerfile: Dockerfile
@@ -41,7 +41,7 @@ services:
       just-reader-network:
         ipv4_address: 172.172.0.13
   just-reader-client:
-    image: just-reader-back/just-reader-client:${IMG_VERSION}
+    image: registry.cn-hangzhou.aliyuncs.com/years-also/just-reader-client:${IMG_VERSION}
     build:
       context: ./just-reader-client
       dockerfile: Dockerfile
@@ -55,7 +55,7 @@ services:
       just-reader-network:
         ipv4_address: 172.172.0.14
   just-reader-file:
-    image: just-reader-back/just-reader-file:${IMG_VERSION}
+    image: registry.cn-hangzhou.aliyuncs.com/years-also/just-reader-file:${IMG_VERSION}
     build:
       context: ./just-reader-file
       dockerfile: Dockerfile
@@ -69,7 +69,7 @@ services:
       just-reader-network:
         ipv4_address: 172.172.0.15
   just-reader-processor:
-    image: just-reader-back/just-reader-processor:${IMG_VERSION}
+    image: registry.cn-hangzhou.aliyuncs.com/years-also/just-reader-processor:${IMG_VERSION}
     build:
       context: ./just-reader-processor
       dockerfile: Dockerfile
