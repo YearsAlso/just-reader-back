@@ -1,7 +1,7 @@
 package com.yearsalso.data.service.impl;
 
 import com.yearsalso.data.entity.MessageSend;
-import com.yearsalso.data.mapper.MmsMessageSendMapper;
+import com.yearsalso.data.mapper.MessageSendMapper;
 import com.yearsalso.data.service.IMmsMessageSendService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2024-08-12
  */
 @Service("mmsMessageSendService")
-public class MmsMessageSendServiceImpl extends ServiceImpl<MmsMessageSendMapper, MessageSend> implements IMmsMessageSendService {
+public class MmsMessageSendServiceImpl extends ServiceImpl<MessageSendMapper, MessageSend> implements IMmsMessageSendService {
 
 }

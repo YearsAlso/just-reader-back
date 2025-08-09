@@ -3,7 +3,7 @@ package com.yearsalso.data.service.impl;
 import com.yearsalso.common.api.CommonSearch;
 import com.yearsalso.data.dto.CommonPage;
 import com.yearsalso.data.entity.File;
-import com.yearsalso.data.mapper.FmsFileMapper;
+import com.yearsalso.data.mapper.FileMapper;
 import com.yearsalso.data.service.IFmsFileService;
 import com.yearsalso.data.utils.PageUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
  * @since 2024-08-12
  */
 @Service("fmsFileService")
-public class FmsFileServiceImpl extends ServiceImpl<FmsFileMapper, File> implements IFmsFileService {
+public class FmsFileServiceImpl extends ServiceImpl<FileMapper, File> implements IFmsFileService {
 
     @Override
     public CommonPage<File> findByCondition(File file, CommonSearch searchVo, IPage<File> pageVo) {

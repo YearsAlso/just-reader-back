@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yearsalso.data.mapper.BookCategoryMapper">
+
+    <resultMap id="BookCategoryResultMap" type="com.yearsalso.data.entity.BookCategory">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <!-- 根据实际字段补充 -->
+    </resultMap>
+
+    <select id="selectById" resultMap="BookCategoryResultMap">
+        SELECT * FROM book_category WHERE id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="BookCategoryResultMap">
+        SELECT * FROM book_category
+    </select>
+
+    <insert id="insert" parameterType="com.yearsalso.data.entity.BookCategory">
+        INSERT INTO book_category (name, description)
+        VALUES (#{name}, #{description})
+    </insert>
+
+    <update id="update" parameterType="com.yearsalso.data.entity.BookCategory">
+        UPDATE book_category
+        SET name = #{name},
+            description = #{description}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM book_category WHERE id = #{id}
+    </delete>
+
+</mapper>

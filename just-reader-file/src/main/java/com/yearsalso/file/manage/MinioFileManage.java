@@ -6,7 +6,7 @@ import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.dto.FmsSettingDto;
 import com.yearsalso.data.entity.Setting;
-import com.yearsalso.data.mapper.CmsSettingMapper;
+import com.yearsalso.data.mapper.SettingMapper;
 import com.yearsalso.file.dto.MinioBucketPolicyConfigDto;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
@@ -33,7 +33,7 @@ import java.io.OutputStream;
 public class MinioFileManage implements FileManage {
 
     @Autowired
-    private CmsSettingMapper settingDao;
+    private SettingMapper settingDao;
 
     @Override
     public FmsSettingDto getFmsSetting() {

@@ -1,7 +1,7 @@
 package com.yearsalso.data.service.impl;
 
 import com.yearsalso.data.entity.UserRolePermission;
-import com.yearsalso.data.mapper.UmsRolePermissionMapper;
+import com.yearsalso.data.mapper.RolePermissionMapper;
 import com.yearsalso.data.service.IUmsRolePermissionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2024-08-12
  */
 @Service("umsRolePermissionService")
-public class UmsRolePermissionServiceImpl extends ServiceImpl<UmsRolePermissionMapper, UserRolePermission> implements IUmsRolePermissionService {
+public class UmsRolePermissionServiceImpl extends ServiceImpl<RolePermissionMapper, UserRolePermission> implements IUmsRolePermissionService {
 
 }

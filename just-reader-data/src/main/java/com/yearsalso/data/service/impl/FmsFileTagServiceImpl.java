@@ -1,7 +1,7 @@
 package com.yearsalso.data.service.impl;
 
 import com.yearsalso.data.entity.FileTag;
-import com.yearsalso.data.mapper.FmsFileTagMapper;
+import com.yearsalso.data.mapper.FileTagMapper;
 import com.yearsalso.data.service.IFmsFileTagService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2024-08-12
  */
 @Service("fmsFileTagService")
-public class FmsFileTagServiceImpl extends ServiceImpl<FmsFileTagMapper, FileTag> implements IFmsFileTagService {
+public class FmsFileTagServiceImpl extends ServiceImpl<FileTagMapper, FileTag> implements IFmsFileTagService {
 
 }

@@ -1,7 +1,7 @@
 package com.yearsalso.data.service.impl;
 
 import com.yearsalso.data.entity.Setting;
-import com.yearsalso.data.mapper.CmsSettingMapper;
+import com.yearsalso.data.mapper.SettingMapper;
 import com.yearsalso.data.service.ICmsSettingService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.cache.annotation.CacheEvict;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
  */
 @Service("cmsSettingService")
 @EnableCaching
-public class CmsSettingServiceImpl extends ServiceImpl<CmsSettingMapper, Setting> implements ICmsSettingService {
+public class CmsSettingServiceImpl extends ServiceImpl<SettingMapper, Setting> implements ICmsSettingService {
 
 
     @Override

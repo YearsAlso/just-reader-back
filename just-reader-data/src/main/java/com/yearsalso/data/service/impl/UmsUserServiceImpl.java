@@ -2,8 +2,8 @@ package com.yearsalso.data.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yearsalso.data.mapper.UmsPermissionMapper;
-import com.yearsalso.data.mapper.UmsUserMapper;
+import com.yearsalso.data.mapper.UserMapper;
+import com.yearsalso.data.mapper.UserPermissionMapper;
 import com.yearsalso.data.entity.User;
 import com.yearsalso.data.service.IUmsUserService;
 import lombok.extern.slf4j.Slf4j;
@@ -21,12 +21,12 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service("umsUserService")
-public class UmsUserServiceImpl extends ServiceImpl<UmsUserMapper, User> implements IUmsUserService {
+public class UmsUserServiceImpl extends ServiceImpl<UserMapper, User> implements IUmsUserService {
 
     @Autowired
-    private UmsPermissionMapper umsPermissionMapper;
+    private UserPermissionMapper userPermissionMapper;
 
     @Autowired
-    private UmsUserMapper umsUserMapper;
+    private UserMapper umsUserMapper;
 
 }

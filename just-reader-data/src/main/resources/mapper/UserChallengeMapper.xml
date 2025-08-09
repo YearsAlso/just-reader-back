@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yearsalso.data.mapper.UserChallengeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yearsalso.data.entity.UserChallenge">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="challenge_id" property="challengeId"/>
+        <result column="is_completed" property="isCompleted"/>
+        <result column="completed_at" property="completedAt"/>
+        <result column="status" property="status"/>
+        <result column="progress" property="progress"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        user_id,
+        challenge_id,
+        is_completed,
+        completed_at,
+        status,
+        progress,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+</mapper>
