@@ -1,0 +1,150 @@
+package com.yearsalso.client.utils;
+
+
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yearsalso.client.vo.PageVo;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+* @author
+ */
+public class PageUtil {
+
+    /**
+     * JPA分页封装
+     * @param page
+     * @return
+     */
+    public static Pageable initPage(PageVo page){
+
+        Pageable pageable = null;
+        int pageNumber = page.getCurrent();
+        int pageSize = page.getPageSize();
+        String sort = page.getSort();
+        String order = page.getOrderBy();
+        String[] sorts = page.getSorts();
+
+        if (pageNumber < 1) {
+            pageNumber = 1;
+        }
+        if (pageSize < 1) {
+            pageSize = 10;
+        }
+
+        Sort.Direction d;
+        if (StrUtil.isNotBlank(sort)) {
+            if (StrUtil.isBlank(order)) {
+                d = Sort.Direction.DESC;
+            } else {
+                d = Sort.Direction.valueOf(order.toUpperCase());
+            }
+            Sort s = Sort.by(d, sort);
+            pageable = PageRequest.of(pageNumber - 1, pageSize, s);
+        }else  if(sorts!=null && sorts.length > 0 ){
+            if (StrUtil.isBlank(order)) {
+                d = Sort.Direction.DESC;
+            } else {
+                d = Sort.Direction.valueOf(order.toUpperCase());
+            }
+            Sort s = Sort.by(d, sorts);
+            pageable = PageRequest.of(pageNumber - 1, pageSize, s);
+        }
+        else {
+            pageable = PageRequest.of(pageNumber - 1, pageSize);
+        }
+        return pageable;
+    }
+
+    /**
+     * Mybatis-Plus分页封装
+     * @param page
+     * @return
+     */
+    public static Page initMpPage(PageVo page){
+
+        Page p = null;
+        int pageNumber = page.getCurrent();
+        int pageSize = page.getPageSize();
+        String sort = page.getSort();
+        String order = page.getOrderBy();
+        String[] sorts = page.getSorts();
+
+        if (pageNumber < 1) {
+            pageNumber = 1;
+        }
+        if (pageSize < 1) {
+            pageSize = 10;
+        }
+        if (StrUtil.isNotBlank(sort)) {
+            boolean isAsc = false;
+            if (!StrUtil.isBlank(order)) {
+                if ("asc".equals(order.toLowerCase())) {
+                    isAsc = true;
+                }
+            }
+            p = new Page(pageNumber, pageSize);
+            if (isAsc) {
+                p.addOrder(OrderItem.asc(sort));
+            } else {
+                p.addOrder(OrderItem.desc(sort));
+            }
+        } else if (sorts != null) {
+            boolean isAsc = false;
+            if (!StrUtil.isBlank(order)) {
+                if ("asc".equals(order.toLowerCase())) {
+                    isAsc = true;
+                }
+            }
+            p = new Page(pageNumber, pageSize);
+            for (String column: sorts) {
+                if (isAsc) {
+                    p.addOrder(OrderItem.asc(column));
+                } else {
+                    p.addOrder(OrderItem.desc(column));
+                }
+            }
+        } else {
+            p = new Page(pageNumber, pageSize);
+            p.addOrder(OrderItem.desc("id"));
+        }
+        return p;
+    }
+
+    /**
+     * List 手动分页
+     * @param page
+     * @param list
+     * @return
+     */
+    public static List listToPage(PageVo page, List list) {
+
+        int pageNumber = page.getCurrent() - 1;
+        int pageSize = page.getPageSize();
+
+        if(pageNumber<0){
+            pageNumber = 0;
+        }
+        if(pageSize<1){
+            pageSize = 10;
+        }
+
+        int fromIndex = pageNumber * pageSize;
+        int toIndex = pageNumber * pageSize + pageSize;
+
+        if(fromIndex > list.size()){
+            return new ArrayList();
+        } else if(toIndex >= list.size()) {
+            return list.subList(fromIndex, list.size());
+        } else {
+            return list.subList(fromIndex, toIndex);
+        }
+    }
+}
