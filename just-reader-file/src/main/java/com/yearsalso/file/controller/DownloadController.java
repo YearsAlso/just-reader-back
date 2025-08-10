@@ -4,8 +4,8 @@ package com.yearsalso.file.controller;
 import com.yearsalso.common.constant.SettingsConstant;
 import com.yearsalso.data.entity.File;
 import com.yearsalso.data.entity.Setting;
-import com.yearsalso.data.service.IFmsFileService;
-import com.yearsalso.data.service.ICmsSettingService;
+import com.yearsalso.data.service.IFileService;
+import com.yearsalso.data.service.ISettingService;
 import com.yearsalso.file.FileManageFactory;
 import cn.hutool.core.codec.Base64;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,13 +35,13 @@ public class DownloadController {
     private RestTemplate restTemplate;
 
     @Resource(name = "fmsFileService")
-    private IFmsFileService fmsFileService;
+    private IFileService fmsFileService;
 
     @Autowired
     private FileManageFactory fileManageFactory;
 
     @Autowired
-    ICmsSettingService cmsSettingService;
+    ISettingService cmsSettingService;
 
     /**
      * 根据文件ID下载文件

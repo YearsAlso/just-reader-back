@@ -7,8 +7,8 @@ import com.yearsalso.common.constant.SettingsConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.entity.Setting;
 import com.yearsalso.data.entity.File;
-import com.yearsalso.data.service.ICmsSettingService;
-import com.yearsalso.data.service.IFmsFileService;
+import com.yearsalso.data.service.ISettingService;
+import com.yearsalso.data.service.IFileService;
 import com.yearsalso.file.FileManageFactory;
 import com.yearsalso.file.utils.Base64DecodeMultipartFile;
 import cn.hutool.core.codec.Base64;
@@ -45,10 +45,10 @@ public class UploadController {
     private FileManageFactory fileManageFactory;
 
     @Autowired
-    private ICmsSettingService cmsSettingService;
+    private ISettingService cmsSettingService;
 
     @Autowired
-    private IFmsFileService fmsFileService;
+    private IFileService fmsFileService;
 
     /**
      * 获取存储类型

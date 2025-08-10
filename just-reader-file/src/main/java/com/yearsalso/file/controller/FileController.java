@@ -6,7 +6,7 @@ import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.dto.CommonPage;
 import com.yearsalso.data.entity.File;
-import com.yearsalso.data.service.IFmsFileService;
+import com.yearsalso.data.service.IFileService;
 import com.yearsalso.file.FileManageFactory;
 import com.yearsalso.file.manage.LocalFileManage;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -42,7 +42,7 @@ public class FileController {
     private FileManageFactory fileManageFactory;
 
     @Resource(name = "fmsFileService")
-    private IFmsFileService fmsFileService;
+    private IFileService fmsFileService;
 
     @RequestMapping(value = "/getByCondition", method = RequestMethod.GET)
     @ResponseBody
