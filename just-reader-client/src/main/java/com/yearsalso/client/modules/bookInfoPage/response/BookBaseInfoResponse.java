@@ -1,4 +1,4 @@
-package com.yearsalso.client.modules.bookInfoPage;
+package com.yearsalso.client.modules.bookInfoPage.response;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
