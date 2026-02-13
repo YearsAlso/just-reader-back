@@ -4,7 +4,7 @@ import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.dto.FmsSettingDto;
 import com.yearsalso.data.entity.Setting;
-import com.yearsalso.data.mapper.CmsSettingMapper;
+import com.yearsalso.data.mapper.SettingMapper;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.azure.storage.blob.*;
@@ -21,7 +21,7 @@ import java.io.OutputStream;
 @Component
 public class AzureBlobFileManage implements FileManage {
     @Autowired
-    private CmsSettingMapper settingDao;
+    private SettingMapper settingDao;
 
     private BlobServiceClient getBlobServiceClient(FmsSettingDto fmsSetting) {
         return new BlobServiceClientBuilder()

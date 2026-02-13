@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>just-reader-client</artifactId>
+    <description>客户端接口</description>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

@@ -4,7 +4,7 @@ import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.dto.FmsSettingDto;
 import com.yearsalso.data.entity.Setting;
-import com.yearsalso.data.mapper.CmsSettingMapper;
+import com.yearsalso.data.mapper.SettingMapper;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.shaded.com.google.gson.Gson;
 import com.qcloud.cos.COSClient;
@@ -33,7 +33,7 @@ import java.io.OutputStream;
 public class TencentFileManage implements FileManage{
 
     @Autowired
-    private CmsSettingMapper settingService;
+    private SettingMapper settingService;
 
 
     @Override

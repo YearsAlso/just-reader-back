@@ -4,7 +4,7 @@ import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
 import com.yearsalso.data.dto.FmsSettingDto;
 import com.yearsalso.data.entity.Setting;
-import com.yearsalso.data.mapper.CmsSettingMapper;
+import com.yearsalso.data.mapper.SettingMapper;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.shaded.com.google.gson.Gson;
 import com.aliyun.oss.OSSClient;
@@ -25,12 +25,12 @@ import java.io.OutputStream;
 public class AliFileManage implements FileManage {
 
     @Autowired
-    private CmsSettingMapper cmsSettingMapper;
+    private SettingMapper settingMapper;
 
     @Override
     public FmsSettingDto getFmsSetting() {
 
-        Setting setting = cmsSettingMapper.selectOneBySettingKey(StoreTypeConstant.ALI_OSS);
+        Setting setting = settingMapper.selectOneBySettingKey(StoreTypeConstant.ALI_OSS);
         if (setting == null || StrUtil.isBlank(setting.getSettingValue())) {
             throw new ApiException("您还未配置阿里云OSS存储");
         }

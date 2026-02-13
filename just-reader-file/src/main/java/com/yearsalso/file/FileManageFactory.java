@@ -5,8 +5,8 @@ import cn.hutool.core.util.StrUtil;
 import com.yearsalso.common.constant.SettingsConstant;
 import com.yearsalso.common.constant.StoreTypeConstant;
 import com.yearsalso.common.exception.ApiException;
-import com.yearsalso.data.mapper.FmsFileMapper;
-import com.yearsalso.data.mapper.CmsSettingMapper;
+import com.yearsalso.data.mapper.FileMapper;
+import com.yearsalso.data.mapper.SettingMapper;
 import com.yearsalso.data.entity.Setting;
 import com.yearsalso.file.manage.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,10 @@ import org.springframework.stereotype.Component;
 public class FileManageFactory {
 
     @Autowired
-    private FmsFileMapper fmsFileMapper;
+    private FileMapper fileMapper;
 
     @Autowired
-    private CmsSettingMapper cmsSettingMapper;
+    private SettingMapper settingMapper;
 
     @Autowired
     private QiniuFileManage qiniuFileManage;
@@ -59,12 +59,12 @@ public class FileManageFactory {
     }
 
     public FileManage getFileManage() {
-        Setting setting = cmsSettingMapper.selectOneBySettingKey(SettingsConstant.OSS_USED);
+        Setting setting = settingMapper.selectOneBySettingKey(SettingsConstant.OSS_USED);
         if (setting == null || StrUtil.isBlank(setting.getSettingValue())) {
             setting = new Setting();
             setting.setSettingKey(SettingsConstant.OSS_USED);
             setting.setSettingValue(StoreTypeConstant.LOCAL_OSS);
-            cmsSettingMapper.insert(setting);
+            settingMapper.insert(setting);
         }
         String type = setting.getSettingValue();
         return this.getFileManage(type);
