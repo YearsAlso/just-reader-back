@@ -2,6 +2,7 @@ package com.yearsalso.auth.controller;
 
 import com.yearsalso.auth.domain.LoginRequestParam;
 import com.yearsalso.auth.domain.UmsAdminLoginParam;
+import com.yearsalso.auth.domain.UmsClientLoginParam;
 import com.yearsalso.auth.service.UmsAdminService;
 import com.yearsalso.auth.service.UmsClientService;
 import com.yearsalso.common.api.CommonResult;
@@ -45,12 +46,13 @@ public class AuthController {
 
             return adminService.login(umsAdminLoginParam);
         } else if (AuthConstant.DEVICE_CLIENT_ID.equals(clientType)) {
-            return deviceService.login(
-                    loginParam.username,
-                    loginParam.password,
-                    loginParam.getDeviceCode(),
-                    loginParam.getAutoLogin()
-            );
+            UmsClientLoginParam umsClientLoginParam = UmsClientLoginParam.builder()
+                    .username(loginParam.getUsername())
+                    .password(loginParam.getPassword())
+                    .autoLogin(loginParam.getAutoLogin())
+                    .clientType(clientType)
+                    .build();
+            return deviceService.login(umsClientLoginParam);
         } else {
             return CommonResult.failed("clientId不正确");
         }
