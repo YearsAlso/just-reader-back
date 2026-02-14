@@ -62,6 +62,7 @@
 /Volumes/MxStore/Project/just-reader-back/just-reader-data/src/main/java/com/yearsalso/data/service/impl/BookMetadataServiceImpl.java
 /Volumes/MxStore/Project/just-reader-back/just-reader-data/src/main/java/com/yearsalso/data/service/impl/BookSurveyServiceImpl.java
 /Volumes/MxStore/Project/just-reader-back/just-reader-data/src/main/java/com/yearsalso/data/service/impl/MetadataServiceImpl.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-data/src/main/java/com/yearsalso/data/entity/Document.java
 /Volumes/MxStore/Project/just-reader-back/just-reader-data/src/main/java/com/yearsalso/data/entity/MessageSend.java
 /Volumes/MxStore/Project/just-reader-back/just-reader-data/src/main/java/com/yearsalso/data/entity/UserMedal.java
 /Volumes/MxStore/Project/just-reader-back/just-reader-data/src/main/java/com/yearsalso/data/mapper/BookSurveyMapper.java

@@ -143,6 +143,7 @@ com/yearsalso/data/service/IBookAnnotationsService.class
 com/yearsalso/data/entity/DictData.class
 com/yearsalso/data/service/impl/UserMedalServiceImpl.class
 com/yearsalso/data/service/impl/UserSurveyServiceImpl.class
+com/yearsalso/data/entity/Document.class
 com/yearsalso/data/service/IBookQuestionService.class
 com/yearsalso/data/entity/Setting.class
 com/yearsalso/data/service/impl/FileServiceImpl.class

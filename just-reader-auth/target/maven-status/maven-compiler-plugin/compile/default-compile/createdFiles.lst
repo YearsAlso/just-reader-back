@@ -1,4 +1,10 @@
+com/yearsalso/auth/domain/LoginRequestParam.class
 com/yearsalso/auth/domain/UmsAdminLoginParam$UmsAdminLoginParamBuilder.class
 com/yearsalso/auth/JustReaderAuthApplication.class
-com/yearsalso/auth/config/SpringDocConfig.class
+com/yearsalso/auth/controller/AuthController.class
+com/yearsalso/auth/domain/UmsClientLoginParam.class
 com/yearsalso/auth/domain/UmsAdminLoginParam.class
+com/yearsalso/auth/config/SpringDocConfig.class
+com/yearsalso/auth/service/UmsClientService.class
+com/yearsalso/auth/domain/UmsClientLoginParam$UmsClientLoginParamBuilder.class
+com/yearsalso/auth/service/UmsAdminService.class

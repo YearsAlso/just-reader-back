@@ -1,0 +1,3 @@
+com/yearsalso/monitor/config/SecuritySecureConfig.class
+com/yearsalso/monitor/JustReaderMonitorApplication.class
+com/yearsalso/monitor/filter/CustomCsrfFilter.class
