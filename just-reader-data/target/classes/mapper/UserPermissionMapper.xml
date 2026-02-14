@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yearsalso.data.mapper.UserPermissionMapper">
+    <update id="updatePermission">
+        update ums_permission
+            <set>
+                <if test="name != null">name = #{name},</if>
+                <if test="value != null">`value` = #{value},</if>
+                <if test="uri != null">uri = #{uri},</if>
+                <if test="pid != null">pid = #{pid},</if>
+                <if test="type != null">`type` = #{type},</if>
+                <if test="icon != null">icon = #{icon},</if>
+                <if test="sort != null">sort = #{sort},</if>
+                <if test="status != null">`status` = #{status},</if>
+            </set>
+        where id = #{id} AND del_flag = 0
+    </update>
+
+    <select id="selectListByUserId" resultType="com.yearsalso.data.entity.UserPermission">
+        SELECT p.*
+        FROM ums_user u
+                 JOIN
+             ums_user_role ru ON u.id = ru.user_id
+                 JOIN
+             ums_role r ON ru.role_id = r.id
+                 JOIN
+             ums_role_permission rp ON r.id = rp.role_id
+                 JOIN
+             ums_permission p ON rp.permission_id = p.id
+        WHERE u.id = #{userId} AND u.del_flag = 0;
+    </select>
+</mapper>

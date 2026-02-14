@@ -1,0 +1,17 @@
+spring:
+  devtools:
+    restart:
+      enabled: false
+  cloud:
+    nacos:
+      username: @nacos.username@
+      password: @nacos.password@
+      discovery:
+        server-addr: just-reader-nacos:18848
+      config:
+        server-addr: just-reader-nacos:18848
+        file-extension: yaml
+  config:
+    import:
+      - nacos:application-@profiles.active@.yml
+      - nacos:${spring.application.name}-@profiles.active@.yml

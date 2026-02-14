@@ -1,0 +1,70 @@
+{
+  "groups": [
+    {
+      "name": "spring.rabbitmq",
+      "type": "com.yearsalso.common.domain.RabbitMqProperties",
+      "sourceType": "com.yearsalso.common.domain.RabbitMqProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.rabbitmq.broker-url",
+      "type": "java.lang.String",
+      "description": "RabbitMQ Broker地址 格式为：协议:\/\/主机名或IP:端口号，例如 amqp:\/\/localhost:5672 用于建立与消息中间件的连接",
+      "sourceType": "com.yearsalso.common.domain.RabbitMqProperties"
+    },
+    {
+      "name": "spring.rabbitmq.host",
+      "type": "java.lang.String",
+      "description": "RabbitMQ主机地址",
+      "sourceType": "com.yearsalso.common.domain.RabbitMqProperties",
+      "defaultValue": "localhost"
+    },
+    {
+      "name": "spring.rabbitmq.password",
+      "type": "java.lang.String",
+      "description": "RabbitMQ登录密码 配合用户名进行RabbitMQ服务的身份验证",
+      "sourceType": "com.yearsalso.common.domain.RabbitMqProperties"
+    },
+    {
+      "name": "spring.rabbitmq.port",
+      "type": "java.lang.Integer",
+      "description": "RabbitMQ端口",
+      "sourceType": "com.yearsalso.common.domain.RabbitMqProperties",
+      "defaultValue": 5672
+    },
+    {
+      "name": "spring.rabbitmq.queue-name",
+      "type": "java.lang.String",
+      "description": "存储消息的队列名称 用于指定消息的接收端从哪个队列中消费消息",
+      "sourceType": "com.yearsalso.common.domain.RabbitMqProperties"
+    },
+    {
+      "name": "spring.rabbitmq.ssl-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用SSL",
+      "sourceType": "com.yearsalso.common.domain.RabbitMqProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "spring.rabbitmq.topic-name",
+      "type": "java.lang.String",
+      "description": "主题名称 在发布\/订阅模式中用于消息的分类和路由",
+      "sourceType": "com.yearsalso.common.domain.RabbitMqProperties"
+    },
+    {
+      "name": "spring.rabbitmq.usr-name",
+      "type": "java.lang.String",
+      "description": "RabbitMQ登录用户名 用于认证和连接RabbitMQ服务器",
+      "sourceType": "com.yearsalso.common.domain.RabbitMqProperties"
+    },
+    {
+      "name": "spring.rabbitmq.virtual-host",
+      "type": "java.lang.String",
+      "description": "虚拟主机",
+      "sourceType": "com.yearsalso.common.domain.RabbitMqProperties",
+      "defaultValue": "\/"
+    }
+  ],
+  "hints": []
+}

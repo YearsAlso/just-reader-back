@@ -1,0 +1,17 @@
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/FileManageFactory.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/manage/MinioFileManage.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/manage/LocalFileManage.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/config/RestTemplateConfig.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/controller/FileController.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/utils/Base64DecodeMultipartFile.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/SkeyeproFileApplication.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/config/MyMetaObjectHandler.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/controller/DownloadController.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/manage/TencentFileManage.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/dto/MinioBucketPolicyConfigDto.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/config/AdminMybatisPlusConfig.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/controller/UploadController.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/manage/QiniuFileManage.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/manage/FileManage.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/manage/AzureBlobFileManage.java
+/Volumes/MxStore/Project/just-reader-back/just-reader-file/src/main/java/com/yearsalso/file/manage/AliFileManage.java

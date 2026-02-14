@@ -1,0 +1,141 @@
+server:
+  port: 58080
+  undertow:
+    threads:
+      io: 8  # Number of I/O threads, typically 2 * number of CPU cores
+      worker: 64  # Number of worker threads, typically 8 * number of I/O threads
+    buffer-size: 1024  # Buffer size in bytes
+    direct-buffers: true  # Use direct buffers for better performance
+    max-http-post-size: 2GB  # Maximum size of HTTP POST content in bytes (10MB)
+    max-parameters: 1000  # Maximum number of parameters allowed in a request
+    max-headers: 200  # Maximum number of headers allowed in a request
+    max-cookies: 200  # Maximum number of cookies allowed in a request
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:35432/els-just-reader-local
+    username: root
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      stat-view-servlet: #访问监控网页的登录用户名和密码
+        login-username: druid
+        login-password: druid
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  servlet:
+    multipart:
+      enabled: true #开启文件上传
+      max-file-size: 1024MB #限制文件上传大小为1024M
+      max-request-size: 1024MB
+      file-size-threshold: 0
+  # 配置rabbitmq
+  rabbitmq:
+    # 主机ip，修改成实际rabbitmq配置
+    host: 127.0.0.1
+    # 端口，修改成实际rabbitmq配置
+    port: 15672
+    # 用户名，修改成实际rabbitmq配置
+    username: admin
+    # 用户密码，修改成实际rabbitmq配置
+    password: admin
+  data:
+    redis:
+      host: localhost
+      database: 0
+      port: 6379
+      password:
+      timeout: 3000ms
+  devtools:
+    restart:
+      enabled: true
+      exclude: static/**,public/**
+management: #开启SpringBoot Admin的监控
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    logfile:
+      enabled: true
+      external-file: logs/just-reader-client/spring.log
+redis:
+  database: just-reader-client
+  key:
+    admin: 'ums:admin'
+  expire:
+    common: 86400 # 24小时
+springdoc:
+  swagger-ui:
+    # 修改Swagger UI路径
+    path: /swagger-ui.html
+    # 开启Swagger UI界面
+    enabled: true
+    # 用于配置tag和operation的展开方式，这里配置为都不展开
+    doc-expansion: 'none'
+  api-docs:
+    # 修改api-docs路径
+    path: /v3/api-docs
+    # 开启api-docs
+    enabled: true
+  group-configs:
+    - group: 'default'
+      packages-to-scan: com.yearsalso.admin.controller
+  default-flat-param-object: false
+sa-token:
+  # token名称 (同时也是cookie名称)
+  token-name: Authorization
+  # token有效期，单位秒，-1代表永不过期
+  timeout: 604800
+  # token临时有效期 (指定时间内无操作就视为token过期)，单位秒
+  active-timeout: -1
+  # 是否允许同一账号并发登录 (为false时新登录挤掉旧登录)
+  is-concurrent: true
+  # 在多人登录同一账号时，是否共用一个token (为false时每次登录新建一个token)
+  is-share: false
+  # token风格
+  token-style: tik
+  # 是否输出操作日志
+  is-log: false
+  # 是否从cookie中读取token
+  is-read-cookie: false
+  # 是否从head中读取token
+  is-read-header: true
+  # token前缀
+  token-prefix: Bearer
+  # jwt秘钥
+  jwt-secret-key: sa-secret-key123
+  # 是否打印banner
+  is-print: false
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml,mapper/*/*.xml
+  type-aliases-package: com..yearsalso.data.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  global-config:
+    db-config:
+      logic-delete-field: delFlag # 全局逻辑删除字段名
+      logic-delete-value: 1 # 逻辑已删除值
+      logic-not-delete-value: 0 # 逻辑未删除值
+logging:
+  # 输出级别
+  level:
+    root: info
+
+snowflake:
+  machine-id: 1
+  data-center-id: 1
