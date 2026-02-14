@@ -1,0 +1,6 @@
+com/yearsalso/document/dto/UploadResponse$UploadResponseBuilder.class
+com/yearsalso/document/dto/UploadResponse.class
+com/yearsalso/document/service/impl/DocumentUploadServiceImpl.class
+com/yearsalso/document/JustReaderDocumentApplication.class
+com/yearsalso/document/service/DocumentUploadService.class
+com/yearsalso/document/controller/DocumentUploadController.class
