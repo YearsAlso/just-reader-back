@@ -28,7 +28,6 @@
         <module>just-reader-file</module>
         <module>just-reader-auth</module>
         <module>just-reader-monitor</module>
-        <module>just-reader-document</module>
     </modules>
 
     <properties>
